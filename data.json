@@ -31,7 +31,12 @@
         "query": "Courrèges 1960s dress",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "André Courrèges 1965 collection",
+          "Pierre Cardin space age fashion 1960s",
+          "Mod fashion 1960s vinyl dress"
+        ]
       },
       {
         "slot": "design",
@@ -39,7 +44,13 @@
         "query": "Ball Chair Eero Aarnio",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "Verner Panton chair 1960s",
+          "Joe Colombo Mini-Kitchen",
+          "Olivier Mourgue Djinn chair",
+          "Tupperware 1960s design"
+        ]
       },
       {
         "slot": "material",
@@ -47,7 +58,11 @@
         "query": "fibreglass texture close-up",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "PVC vinyl texture",
+          "fiberglass reinforced plastic closeup"
+        ]
       },
       {
         "slot": "space",
@@ -55,7 +70,12 @@
         "query": "Futuro house Matti Suuronen",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "Space Age architecture 1960s",
+          "Expo 67 Montreal pavilion",
+          "Apollo mission control room"
+        ]
       }
     ]
   },
@@ -91,7 +111,12 @@
         "query": "Seditionaries bondage trousers Westwood",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "punk fashion 1977 London",
+          "safety pin punk clothing",
+          "Vivienne Westwood 1970s"
+        ]
       },
       {
         "slot": "design",
@@ -99,7 +124,13 @@
         "query": "Superstudio Continuous Monument",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "Archizoom No-Stop City",
+          "Ettore Sottsass Superstudio radical design",
+          "Gaetano Pesce 1970s chair",
+          "Joe Colombo Tube chair"
+        ]
       },
       {
         "slot": "material",
@@ -107,7 +138,11 @@
         "query": "rubber latex texture close-up",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "latex rubber surface macro",
+          "leather studs close-up"
+        ]
       },
       {
         "slot": "space",
@@ -115,7 +150,12 @@
         "query": "World's End 430 King's Road shop",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "punk club 1970s CBGB",
+          "Pompidou Centre construction 1976",
+          "radical architecture 1970s Italy"
+        ]
       }
     ]
   },
@@ -151,7 +191,12 @@
         "query": "Moncler puffer jacket 1980s",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "1980s fashion Milan",
+          "Memphis fashion 1980s pattern",
+          "shell suit 1980s"
+        ]
       },
       {
         "slot": "design",
@@ -159,7 +204,13 @@
         "query": "Memphis Group Carlton bookcase Sottsass",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "Memphis Group furniture",
+          "Ettore Sottsass Memphis",
+          "Alessi 1980s design",
+          "Swatch 1983"
+        ]
       },
       {
         "slot": "material",
@@ -167,7 +218,11 @@
         "query": "plastic laminate pattern 1980s",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "Abet Print laminate pattern",
+          "terrazzo pattern close-up"
+        ]
       },
       {
         "slot": "space",
@@ -175,7 +230,12 @@
         "query": "Memphis Milano interior 1980s",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "Memphis Group showroom",
+          "1980s shopping mall interior",
+          "1980s suburban house interior"
+        ]
       }
     ]
   },
@@ -211,7 +271,12 @@
         "query": "Martin Margiela tabi boots",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "Maison Margiela 1990s",
+          "Rick Owens 1990s",
+          "1990s gothic industrial fashion"
+        ]
       },
       {
         "slot": "design",
@@ -219,7 +284,13 @@
         "query": "Juicy Salif Alessi Starck",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "Philippe Starck design 1990s",
+          "Alessi Philippe Starck",
+          "Ron Arad 1990s chair",
+          "Marc Newson Lockheed Lounge"
+        ]
       },
       {
         "slot": "material",
@@ -227,7 +298,11 @@
         "query": "cast aluminium surface close-up",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "brushed aluminium close-up",
+          "cast iron rusted surface macro"
+        ]
       },
       {
         "slot": "space",
@@ -235,7 +310,12 @@
         "query": "1990s industrial warehouse interior",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "abandoned factory interior",
+          "industrial loft 1990s",
+          "Berlin techno club 1990s"
+        ]
       }
     ]
   },
@@ -271,7 +351,12 @@
         "query": "Vexed Generation jacket",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "techwear 1990s jacket",
+          "cyberpunk fashion 1990s",
+          "Stone Island 1990s"
+        ]
       },
       {
         "slot": "design",
@@ -279,7 +364,13 @@
         "query": "iMac G3 Bondi Blue",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "iMac G3",
+          "Jonathan Ive iMac",
+          "Dieter Rams Braun design",
+          "Sony Walkman 1990s"
+        ]
       },
       {
         "slot": "material",
@@ -287,7 +378,11 @@
         "query": "translucent polycarbonate close-up",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "translucent plastic macro",
+          "polycarbonate sheet close-up"
+        ]
       },
       {
         "slot": "space",
@@ -295,7 +390,12 @@
         "query": "iMac G3 office 1998",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "1990s office computer interior",
+          "Blade Runner cityscape style 1990s",
+          "Tokyo street night 1990s"
+        ]
       }
     ]
   },
@@ -331,7 +431,12 @@
         "query": "Paco Rabanne chainmail dress",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "Paco Rabanne 1960s metal dress",
+          "Y2K fashion 2000",
+          "Issey Miyake pleats 2000s"
+        ]
       },
       {
         "slot": "design",
@@ -339,7 +444,13 @@
         "query": "iPod first generation",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "iPod original",
+          "Apple iPod 2001",
+          "Marc Newson 2000s design",
+          "Nokia 3310"
+        ]
       },
       {
         "slot": "material",
@@ -347,7 +458,11 @@
         "query": "brushed stainless steel macro",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "stainless steel brushed macro",
+          "chrome mirror surface close-up"
+        ]
       },
       {
         "slot": "space",
@@ -355,7 +470,12 @@
         "query": "Millennium Dome 2000",
         "commons_file": null,
         "credit": null,
-        "local": false
+        "local": false,
+        "more": [
+          "Millennium Dome London",
+          "Frank Gehry Guggenheim Bilbao",
+          "2000s tech office interior"
+        ]
       }
     ]
   }

@@ -22,6 +22,10 @@ Ogni reperto ha 4 slot (una riga della Moodboard):
 
 Se in `data.json` uno slot ha `"local": true`, il sito usa il file in `assets/` (con `w` e `h` per le proporzioni) e non cerca online. Altrimenti usa la ricerca live; se anche quella non trova nulla, mostra una tavola tratteggiata.
 
+Ogni slot ha una `query` principale e un elenco `more` di ricerche aggiuntive: aggiungine quante vuoi per avere più immagini.
+
+Nel muro l'asse verticale è il tempo: in alto 1960, in basso 2005. Ogni immagine sta all'altezza del periodo (`years`) del suo reperto. In orizzontale è infinito.
+
 Per scegliere tu un'immagine precisa: scrivi in `commons_file` il titolo esatto del file di Commons (per esempio `"File:Ball Chair.jpg"`) oppure cambia `query`.
 
 ## Cosa cercare per ogni reperto (secondo la teoria)

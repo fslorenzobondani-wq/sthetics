@@ -224,3 +224,10 @@ button { font: inherit; color: inherit; }
 .hud-tl { text-decoration: none; text-transform: none; font-weight: 400; letter-spacing: 0.02em; font-size: 13px; background: rgba(251, 251, 250, 0.92); }
 .hud-tl:hover { background: var(--ink); color: var(--paper); }
 .hud-bl { background: rgba(251, 251, 250, 0.92); max-width: calc(100% - 140px); overflow-wrap: anywhere; }
+
+/* righello cronologico fisso a sinistra del muro */
+.inf-years { position: absolute; left: 0; top: 0; bottom: 0; width: 46px; pointer-events: none; z-index: 2; overflow: hidden; }
+.inf-years .yr { position: absolute; left: 0; width: 10px; height: 0; border-top: 1px solid var(--ink); }
+.inf-years .yr.dec { width: 46px; }
+.inf-years .yr.dec::after { content: attr(data-yr); position: absolute; left: 4px; top: 2px; font-size: 11px; font-weight: 700; background: rgba(251,251,250,.92); padding: 0 3px; }
+.hud-tl { left: 58px; }

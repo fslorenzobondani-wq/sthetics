@@ -56,7 +56,7 @@ function log(msg) {
 // Nessun server e nessuna chiave: l'API di Commons accetta richieste dal browser (origin=*).
 // Si tengono solo file con licenza CC0, pubblico dominio, CC BY, CC BY-SA. Autore e licenza finiscono nei crediti.
 const COMMONS = 'https://commons.wikimedia.org/w/api.php';
-const LIVE_KEY = 'archaeology-live-v1';
+const LIVE_KEY = 'archaeology-live-v2';
 const LIVE_TTL = 24 * 3600 * 1000;
 const PER_QUERY = 6;
 
@@ -122,7 +122,9 @@ async function loadLive() {
   }
   const jobs = [];
   state.items.forEach((it) => (it.images || []).forEach((im) => {
-    if (!im.local && (im.query || im.commons_file)) jobs.push({ id: it.id, slot: im.slot, q: im.query, file: im.commons_file });
+    if (im.local) return;
+    if (im.commons_file) jobs.push({ id: it.id, slot: im.slot, file: im.commons_file });
+    [im.query].concat(im.more || []).filter(Boolean).forEach((q) => jobs.push({ id: it.id, slot: im.slot, q }));
   }));
   if (!jobs.length) return;
   log(`LIVE SEARCH · WIKIMEDIA COMMONS · ${jobs.length} QUERY`);
@@ -133,7 +135,10 @@ async function loadLive() {
     while (next < jobs.length) {
       const job = jobs[next++];
       try {
-        live[job.id + '|' + job.slot] = await commonsSearch(job);
+        const found = await commonsSearch(job);
+        const key = job.id + '|' + job.slot;
+        const list = live[key] || (live[key] = []);
+        found.forEach((f) => { if (!list.some((x) => x.credit.title === f.credit.title)) list.push(f); });
         state.live = Object.assign({}, live);
         schedulePool();
       } catch (err) {
@@ -321,10 +326,13 @@ function renderDossier(id) {
 }
 
 // ---------- MURO INFINITO ----------
-// Colonne di immagini con proporzioni naturali e partenza sfalsata, come nella reference.
-// Ogni "ricetta" di colonna è una sequenza casuale (con seme) di M immagini del pool, che si ripete
-// all'infinito in verticale. Le ricette R si ripetono in orizzontale. Si creano solo le tavole visibili.
-const COL_W = 250, GAP = 28, R = 9, M = 14;
+// Asse verticale = tempo: in alto 1960, in basso 2005. Ogni immagine sta all'altezza del periodo del suo reperto
+// (con un po' di casualità dentro il periodo). Le colonne sono sfalsate, con proporzioni naturali.
+// In orizzontale è infinito: le R ricette di colonna si ripetono. In verticale è finito (la cronologia ha un inizio e una fine).
+const COL_W = 250, GAP = 28, R = 9;
+const PXY = 150, TOP_PAD = 140;                       // pixel per anno e margine sopra 1960
+const WORLD_H = TOP_PAD * 2 + (YEAR_MAX - YEAR_MIN) * PXY;
+const yearY = (yr) => TOP_PAD + (yr - YEAR_MIN) * PXY;
 const Z_MIN = 0.4, Z_MAX = 2;
 const INF = { x: 0, y: 0, z: 1, z0: 1, tiles: new Map(), pool: [], cols: [], ready: false, drag: null, raf: 0, cap: '' };
 
@@ -345,27 +353,40 @@ function buildWall() {
   INF.cols = [];
   for (let r = 0; r < R; r++) {
     const rand = rng(1000 + r * 7919);
-    const seq = [];
-    let last = -1;
-    for (let k = 0; k < M; k++) {
-      let idx;
-      do { idx = Math.floor(rand() * INF.pool.length); } while (INF.pool.length > 1 && idx === last);
-      seq.push(idx);
+    const picks = [];
+    let cursor = TOP_PAD * 0.4 + rand() * 260, last = -1;
+    while (cursor < WORLD_H - TOP_PAD * 0.4) {
+      // l'immagine deve appartenere a un reperto il cui periodo contiene l'anno di questa posizione
+      const yr = YEAR_MIN + (cursor - TOP_PAD) / PXY;
+      let cand = [];
+      INF.pool.forEach((e, i) => {
+        const it = itemOf(e.id);
+        if (yr >= it.years[0] - 0.5 && yr <= it.years[1] + 1.5 && i !== last) cand.push(i);
+      });
+      if (!cand.length) {
+        let best = 1e9;
+        INF.pool.forEach((e, i) => {
+          const it = itemOf(e.id), d = Math.min(Math.abs(yr - it.years[0]), Math.abs(yr - it.years[1]));
+          if (d < best) { best = d; cand = [i]; } else if (d === best) cand.push(i);
+        });
+      }
+      const idx = cand[Math.floor(rand() * cand.length)];
       last = idx;
+      const e = INF.pool[idx];
+      const h = Math.round(COL_W / Math.min(2.2, Math.max(0.45, e.aspect)));
+      const yTop = Math.max(0, Math.min(cursor, WORLD_H - h));
+      picks.push({ idx, yr: YEAR_MIN + (yTop + h / 2 - TOP_PAD) / PXY, h, y: yTop });
+      cursor += h + GAP + Math.floor(rand() * 90);
     }
-    const prefix = [0];
-    const hs = seq.map((idx) => Math.round(COL_W / Math.min(2.2, Math.max(0.45, INF.pool[idx].aspect))));
-    hs.forEach((h) => prefix.push(prefix[prefix.length - 1] + h + GAP));
-    INF.cols.push({ seq, hs, prefix, period: prefix[M], maxH: Math.max(...hs), y0: Math.floor(rand() * 520) });
+    INF.cols.push(picks);
   }
   INF.tiles.forEach((el) => el.remove());
   INF.tiles.clear();
 }
 
-function makeTile(c, n, y) {
-  const col = INF.cols[mod(c, R)];
-  const k = mod(n, M);
-  const e = INF.pool[col.seq[k]];
+function makeTile(c, k) {
+  const p = INF.cols[mod(c, R)][k];
+  const e = INF.pool[p.idx];
   const item = itemOf(e.id);
   const s = slotOf(e.slot);
   const el = document.createElement('a');
@@ -373,9 +394,9 @@ function makeTile(c, n, y) {
   el.href = '#dossier-' + e.id;
   el.tabIndex = -1;
   el.draggable = false;
-  el.style.cssText = `left:${c * (COL_W + GAP)}px;top:${y}px;width:${COL_W}px;height:${col.hs[k]}px`;
+  el.style.cssText = `left:${c * (COL_W + GAP)}px;top:${Math.round(p.y)}px;width:${COL_W}px;height:${p.h}px`;
   const c2 = e.credit;
-  el.dataset.cap = `#${e.id} · ${s.label}` + (c2 ? ` · ${c2.author || c2.title || ''} · ${c2.license || ''}` : '');
+  el.dataset.cap = `${Math.round(p.yr)} · #${e.id} · ${s.label}` + (c2 ? ` · ${c2.author || c2.title || ''} · ${c2.license || ''}` : '');
   const asPlaceholder = () => {
     el.classList.add('ph');
     el.innerHTML = `<span>#${esc(e.id)} · ${esc(s.label)}</span>`;
@@ -394,41 +415,52 @@ function makeTile(c, n, y) {
   return el;
 }
 
+function infBuildYears() {
+  let html = '';
+  for (let yr = YEAR_MIN; yr <= YEAR_MAX; yr += 5) {
+    html += `<span class="yr ${yr % 10 === 0 ? 'dec' : ''}" data-yr="${yr}"></span>`;
+  }
+  $('inf-years').innerHTML = html;
+}
+
+function infClamp() {
+  const H = $('inf-vp').clientHeight;
+  INF.y = Math.min(Math.max(0, WORLD_H - H / INF.z), Math.max(0, INF.y));
+}
+
 function infUpdate() {
   if (!INF.ready || !INF.cols.length) return;
   const vp = $('inf-vp'), world = $('inf-world');
   const W = vp.clientWidth, H = vp.clientHeight, z = INF.z;
+  infClamp();
   const px = COL_W + GAP;
   const c0 = Math.floor(INF.x / px) - 1, c1 = Math.ceil((INF.x + W / z) / px) + 1;
   const ya = INF.y - 240, yb = INF.y + H / z + 240;
 
-  const need = new Map();
+  const need = new Set();
   for (let c = c0; c <= c1; c++) {
-    const col = INF.cols[mod(c, R)];
-    const cs = Math.floor((ya - col.y0 - col.maxH) / col.period);
-    const ce = Math.floor((yb - col.y0) / col.period);
-    for (let cyc = cs; cyc <= ce; cyc++) {
-      for (let k = 0; k < M; k++) {
-        const y = col.y0 + cyc * col.period + col.prefix[k];
-        if (y + col.hs[k] < ya || y > yb) continue;
-        const n = cyc * M + k;
-        need.set(c + ',' + n, { c, n, y });
-      }
-    }
+    INF.cols[mod(c, R)].forEach((p, k) => {
+      if (p.y + p.h >= ya && p.y <= yb) need.add(c + ',' + k);
+    });
   }
   for (const [key, el] of INF.tiles) {
     if (!need.has(key)) { el.remove(); INF.tiles.delete(key); }
   }
-  for (const [key, t] of need) {
+  for (const key of need) {
     if (!INF.tiles.has(key)) {
-      const el = makeTile(t.c, t.n, t.y);
+      const [c, k] = key.split(',').map(Number);
+      const el = makeTile(c, k);
       world.appendChild(el);
       INF.tiles.set(key, el);
     }
   }
   world.style.transform = `translate(${-INF.x * z}px, ${-INF.y * z}px) scale(${z})`;
+  document.querySelectorAll('#inf-years .yr').forEach((t) => {
+    t.style.top = `${(yearY(+t.dataset.yr) - INF.y) * z}px`;
+  });
+  const yrNow = Math.min(YEAR_MAX, Math.max(YEAR_MIN, YEAR_MIN + (INF.y + H / (2 * z) - TOP_PAD) / PXY));
   $('hud-coord').textContent = INF.cap ||
-    `X ${Math.round(INF.x + W / (2 * z))} · Y ${Math.round(INF.y + H / (2 * z))} · ZOOM ${z.toFixed(2)} · ${INF.pool.length} IMG`;
+    `ANNO ${Math.round(yrNow)} · X ${Math.round(INF.x + W / (2 * z))} · ZOOM ${z.toFixed(2)} · ${INF.pool.length} IMG`;
 }
 
 function infZoomAt(clientX, clientY, factor) {
@@ -470,6 +502,7 @@ function infInit() {
   INF.ready = true;
   const vp = $('inf-vp');
   INF.z0 = INF.z = window.innerWidth < 640 ? 0.7 : 1;
+  infBuildYears();
   buildWall();
 
   vp.addEventListener('pointerdown', (e) => {
