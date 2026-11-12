@@ -9,10 +9,10 @@ const LAYERS = [
 ];
 // Le 4 righe del Moodboard: ogni reperto ha una foto per slot.
 const SLOTS = [
-  { key: 'fashion',  label: 'Moda',          code: 'M' },
+  { key: 'fashion',  label: 'Fashion',        code: 'M' },
   { key: 'design',   label: 'Design',        code: 'D' },
-  { key: 'material', label: 'Materiale 40X', code: 'X' },
-  { key: 'space',    label: 'Spazio',        code: 'S' }
+  { key: 'material', label: 'Material 40X',   code: 'X' },
+  { key: 'space',    label: 'Space',          code: 'S' }
 ];
 const YEAR_MIN = 1960;
 const YEAR_MAX = 2005;
@@ -27,7 +27,7 @@ function esc(str) {
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   }[c]));
 }
-const clockTime = () => new Date().toLocaleTimeString('it-IT');
+const clockTime = () => new Date().toLocaleTimeString('en-GB');
 const slotOf = (key) => SLOTS.find((s) => s.key === key);
 const itemOf = (id) => state.items.find((i) => i.id === id);
 
@@ -116,7 +116,7 @@ async function loadLive() {
   try { cached = JSON.parse(localStorage.getItem(LIVE_KEY) || 'null'); } catch (e) { /* storage non disponibile */ }
   if (cached && cached.v === 1 && cached.d && Date.now() - cached.t < LIVE_TTL) {
     state.live = cached.d;
-    log(`LIVE SEARCH · DA CACHE · ${liveCount()} IMMAGINI`);
+    log(`LIVE SEARCH · FROM CACHE · ${liveCount()} IMAGES`);
     onPoolChanged(true);
     return;
   }
@@ -127,7 +127,7 @@ async function loadLive() {
     [im.query].concat(im.more || []).filter(Boolean).forEach((q) => jobs.push({ id: it.id, slot: im.slot, q }));
   }));
   if (!jobs.length) return;
-  log(`LIVE SEARCH · WIKIMEDIA COMMONS · ${jobs.length} QUERY`);
+  log(`LIVE SEARCH · WIKIMEDIA COMMONS · ${jobs.length} QUERIES`);
 
   const live = {};
   let next = 0, fail = 0;
@@ -149,7 +149,7 @@ async function loadLive() {
   await Promise.all([worker(), worker(), worker(), worker()]);
   state.live = live;
   const n = liveCount();
-  log(fail ? `LIVE SEARCH · ${n} IMMAGINI · ${fail} QUERY FALLITE` : `LIVE SEARCH · ${n} IMMAGINI TROVATE`);
+  log(fail ? `LIVE SEARCH · ${n} IMAGES · ${fail} QUERIES FAILED` : `LIVE SEARCH · ${n} IMAGES FOUND`);
   onPoolChanged(true);
   if (!fail && n) {
     try { localStorage.setItem(LIVE_KEY, JSON.stringify({ v: 1, t: Date.now(), d: live })); } catch (e) { /* ok */ }
@@ -185,7 +185,7 @@ function placeholder(item, slotKey) {
     <path d="M400 370V510M330 440H470" stroke="#0b0b0b" stroke-width="2"/>
     <text x="400" y="580" fill="#0b0b0b" font-family="Courier New, monospace" font-size="34" font-weight="700" text-anchor="middle">SPECIMEN #${esc(item.id)}</text>
     <text x="400" y="624" fill="#0b0b0b" font-family="Courier New, monospace" font-size="26" text-anchor="middle">${esc(s ? s.label.toUpperCase() : '')}</text>
-    <text x="400" y="668" fill="#585854" font-family="Courier New, monospace" font-size="20" text-anchor="middle">IMMAGINE NON CARICATA</text>
+    <text x="400" y="668" fill="#585854" font-family="Courier New, monospace" font-size="20" text-anchor="middle">IMAGE NOT LOADED</text>
   </svg>`;
   const uri = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
   phCache.set(key, uri);
@@ -256,7 +256,7 @@ function renderCatalogue() {
         <h3>${esc(it.title)}</h3>
         <p class="pair">${esc(it.fashion.designer)} + ${esc(it.design.designer)}</p>
         <p class="obj">${esc(it.design.artifact)}</p>
-        ${it.verified ? '' : '<span class="draft">Bozza da verificare</span>'}
+        ${it.verified ? '' : '<span class="draft">Draft, to be verified</span>'}
       </div>
     </a>`).join('');
   bindImgFallback($('grid'));
@@ -267,12 +267,12 @@ function provenanceHTML(it) {
   return SLOTS.map((s) => {
     const e = bestEntry(it, s.key);
     const fig = `FIG. ${esc(it.id)}-${s.code}`;
-    if (!e) return `<li>${fig} · ${esc(s.label)} · fonte da assegnare</li>`;
+    if (!e) return `<li>${fig} · ${esc(s.label)} · source to be assigned</li>`;
     const c = e.credit;
-    if (!c) return `<li>${fig} · ${esc(s.label)} · file locale</li>`;
+    if (!c) return `<li>${fig} · ${esc(s.label)} · local file</li>`;
     const title = c.url
-      ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.title || 'fonte')}</a>`
-      : esc(c.title || 'fonte');
+      ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.title || 'source')}</a>`
+      : esc(c.title || 'source');
     return `<li>${fig} · ${esc(s.label)} · ${title}${c.author ? ' · ' + esc(c.author) : ''}${c.license ? ' · ' + esc(c.license) : ''}</li>`;
   }).join('');
 }
@@ -286,37 +286,37 @@ function renderDossier(id) {
     <article class="dossier">
       <div class="dossier-fig">
         <div id="dossier-main-fig">${figHTML(it, 'design', false)}</div>
-        <p class="caption" id="dossier-caption">Fig. ${esc(it.id)}-D · Design · filtro monocromatico</p>
-        <div class="thumbs" role="group" aria-label="Immagini del reperto">
+        <p class="caption" id="dossier-caption">Fig. ${esc(it.id)}-D · Design · monochrome filter</p>
+        <div class="thumbs" role="group" aria-label="Specimen images">
           ${SLOTS.map((s) => `
             <button type="button" class="thumb" data-slot="${s.key}" aria-pressed="${s.key === 'design'}">
               ${figHTML(it, s.key)}<span>${esc(s.label)}</span>
             </button>`).join('')}
         </div>
-        <h3 class="protocol-title">Provenienza</h3>
+        <h3 class="protocol-title">Provenance</h3>
         <ol class="prov">${provenanceHTML(it)}</ol>
-        ${(it.sources || []).length ? `<h3 class="protocol-title">Fonti dei dati</h3>
+        ${(it.sources || []).length ? `<h3 class="protocol-title">Data sources</h3>
         <ol class="prov">${it.sources.map((x) => `<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.label)}</a></li>`).join('')}</ol>` : ''}
       </div>
       <div class="dossier-main">
         <p class="kicker">Specimen #${esc(it.id)} · ${esc(it.period)}</p>
         <h2>${esc(it.title)}</h2>
         <dl class="facts">
-          <div><dt>Moda</dt><dd>${esc(it.fashion.designer)} — ${esc(it.fashion.artifact)}</dd></div>
-          <div><dt>Design industriale</dt><dd>${esc(it.design.designer)} — ${esc(it.design.artifact)}</dd></div>
-          <div><dt>Stato</dt><dd>${it.verified ? 'Verificato' : '<span class="draft">Bozza da verificare</span>'}</dd></div>
-          ${it.verified ? '' : `<div><dt>Da controllare</dt><dd>${esc(it.to_verify)}</dd></div>`}
+          <div><dt>Fashion</dt><dd>${esc(it.fashion.designer)} — ${esc(it.fashion.artifact)}</dd></div>
+          <div><dt>Industrial design</dt><dd>${esc(it.design.designer)} — ${esc(it.design.artifact)}</dd></div>
+          <div><dt>Status</dt><dd>${it.verified ? 'Verified' : '<span class="draft">Draft, to be verified</span>'}</dd></div>
+          ${it.verified ? '' : `<div><dt>To check</dt><dd>${esc(it.to_verify)}</dd></div>`}
         </dl>
-        <h3 class="protocol-title">Protocollo diagnostico a 5 strati</h3>
+        <h3 class="protocol-title">5-layer diagnostic protocol</h3>
         <ol class="layers">
           ${LAYERS.map((l) => `
             <li><span class="code">${l.code}</span>
               <div><h4>${esc(l.label)}</h4><p>${esc(it.layers[l.key])}</p></div></li>`).join('')}
         </ol>
-        <nav class="pager" aria-label="Reperti">
-          ${prev ? `<a href="#dossier-${esc(prev.id)}">&larr; #${esc(prev.id)}</a>` : '<span class="off">&larr; inizio</span>'}
-          <a href="#catalogue">Catalogo</a>
-          ${next ? `<a href="#dossier-${esc(next.id)}">#${esc(next.id)} &rarr;</a>` : '<span class="off">fine &rarr;</span>'}
+        <nav class="pager" aria-label="Specimens">
+          ${prev ? `<a href="#dossier-${esc(prev.id)}">&larr; #${esc(prev.id)}</a>` : '<span class="off">&larr; start</span>'}
+          <a href="#catalogue">Catalogue</a>
+          ${next ? `<a href="#dossier-${esc(next.id)}">#${esc(next.id)} &rarr;</a>` : '<span class="off">end &rarr;</span>'}
         </nav>
       </div>
     </article>`;
@@ -327,7 +327,7 @@ function renderDossier(id) {
     const s = slotOf(btn.dataset.slot);
     $('dossier-main-fig').innerHTML = figHTML(it, s.key, false);
     bindImgFallback($('dossier-main-fig'));
-    $('dossier-caption').textContent = `Fig. ${it.id}-${s.code} · ${s.label} · filtro monocromatico`;
+    $('dossier-caption').textContent = `Fig. ${it.id}-${s.code} · ${s.label} · monochrome filter`;
     $('dossier').querySelectorAll('.thumb').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
   }));
 }
@@ -467,7 +467,7 @@ function infUpdate() {
   });
   const yrNow = Math.min(YEAR_MAX, Math.max(YEAR_MIN, YEAR_MIN + (INF.y + H / (2 * z) - TOP_PAD) / PXY));
   $('hud-coord').textContent = INF.cap ||
-    `ANNO ${Math.round(yrNow)} · X ${Math.round(INF.x + W / (2 * z))} · ZOOM ${z.toFixed(2)} · ${INF.pool.length} IMG`;
+    `YEAR ${Math.round(yrNow)} · X ${Math.round(INF.x + W / (2 * z))} · ZOOM ${z.toFixed(2)} · ${INF.pool.length} IMG`;
 }
 
 function infZoomAt(clientX, clientY, factor) {
@@ -541,7 +541,7 @@ function infInit() {
     vp.classList.remove('grabbing');
     if (vp.hasPointerCapture(e.pointerId)) vp.releasePointerCapture(e.pointerId);
     if (e.type === 'pointerup' && d.moved < 6 && d.tile) {
-      location.hash = d.tile.getAttribute('href').replace('#', '');
+      go(d.tile.getAttribute('href').replace('#', ''));
     } else if (e.type === 'pointerup' && !reduceMotion() && Math.hypot(d.vx, d.vy) > 0.05) {
       infInertia(d.vx, d.vy);
     }
@@ -612,9 +612,9 @@ function showView(view, id) {
   window.scrollTo(0, 0);
 }
 
-function route() {
+function route(forced) {
   if (!state.items.length) return;
-  const h = location.hash.replace('#', '');
+  const h = (typeof forced === 'string' ? forced : location.hash).replace('#', '');
   const m = h.match(/^dossier-(\d{3})$/);
   if (m && itemOf(m[1])) showView('dossier', m[1]);
   else if (h === 'catalogue') showView('catalogue');
@@ -622,15 +622,28 @@ function route() {
   else showView('infinite');
 }
 
+// Cambia vista anche quando il browser non aggiorna l'indirizzo (pagine incorniciate, anteprime)
+function go(h) {
+  const before = location.hash;
+  try { location.hash = h; } catch (e) { /* ignorato */ }
+  if (location.hash === before) route(h);
+}
+
 function initNav() {
-  $('nav-infinite').addEventListener('click', () => { location.hash = 'infinite'; });
-  $('nav-catalogue').addEventListener('click', () => { location.hash = 'catalogue'; });
-  $('nav-dossier').addEventListener('click', () => {
-    location.hash = 'dossier-' + (state.current || state.items[0].id);
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a || e.defaultPrevented || e.button) return;
+    e.preventDefault();
+    go(a.getAttribute('href').slice(1));
   });
-  $('nav-deposit').addEventListener('click', () => { location.hash = 'deposit'; });
+  $('nav-infinite').addEventListener('click', () => go('infinite'));
+  $('nav-catalogue').addEventListener('click', () => go('catalogue'));
+  $('nav-dossier').addEventListener('click', () => {
+    go('dossier-' + (state.current || state.items[0].id));
+  });
+  $('nav-deposit').addEventListener('click', () => go('deposit'));
   $('nav-moodboard').addEventListener('click', () => {
-    log('MODULE OFFLINE · MOODBOARD MATRIX · IN ARRIVO AL PASSO 4');
+    log('MODULE OFFLINE · MOODBOARD MATRIX · COMING SOON');
   });
 }
 
@@ -647,10 +660,10 @@ async function init() {
   } catch (err) {
     $('view-catalogue').hidden = false;
     $('view-catalogue').innerHTML =
-      '<p class="error">ERROR // impossibile caricare data.json.<br>' +
-      'Se apri index.html con doppio click il browser blocca fetch(): usa un server locale ' +
-      '(es. <code>python3 -m http.server</code>) oppure GitHub Pages.</p>';
-    log('ERROR · data.json NON CARICATO');
+      '<p class="error">ERROR // could not load data.json.<br>' +
+      'If you open index.html by double-clicking, the browser blocks fetch(): use a local server ' +
+      '(e.g. <code>python3 -m http.server</code>) or GitHub Pages.</p>';
+    log('ERROR · data.json NOT LOADED');
     return;
   }
   $('meta-count').textContent = String(state.items.length).padStart(2, '0');
@@ -661,7 +674,7 @@ async function init() {
   renderCatalogue();
   initNav();
   log(`ARCHIVE LOADED · ${state.items.length} SPECIMENS · ${state.items.length * SLOTS.length} SLOTS`);
-  log(`${verified}/${state.items.length} VERIFICATI · ${state.items.length - verified} IN BOZZA`);
+  log(`${verified}/${state.items.length} VERIFIED · ${state.items.length - verified} DRAFT`);
   window.addEventListener('hashchange', route);
   route();
   if (typeof loadDeposits === 'function') loadDeposits();

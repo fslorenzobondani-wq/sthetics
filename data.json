@@ -9,21 +9,21 @@
     "title": "Space Age Rationalism",
     "fashion": {
       "designer": "André Courrèges",
-      "artifact": "Collezione Space Age, autunno 1964"
+      "artifact": "Space Age collection, autumn 1964"
     },
     "design": {
       "designer": "Eero Aarnio",
-      "artifact": "Ball Chair: schizzo del gennaio 1963, presentata alla fiera di Colonia nel 1966"
+      "artifact": "Ball Chair: sketched January 1963, shown at the Cologne furniture fair in 1966"
     },
     "layers": {
-      "tension": "Corsa allo spazio e fiducia nel progresso tecnico: il futuro viene progettato come un prodotto di serie, pulito e ottimista.",
-      "material": "Fibra di vetro e resina, vinile, tessuti rigidi e PVC. Superfici lisce, bianche e industriali, senza traccia della mano.",
-      "artifacts": "Abito trapezio corto e stivali bianchi di Courrèges. Ball Chair di Eero Aarnio: una sfera cava in cui il corpo entra e si isola.",
-      "gesture": "Il corpo è liberato e geometrico: gambe scoperte, passo rapido. La seduta avvolge e separa chi la abita dallo spazio intorno.",
-      "decomposition": "Il bianco ingiallisce e la fibra di vetro si crepa. L'utopia pulita sopravvive come citazione retro-futurista, nostalgia di un futuro mai realizzato."
+      "tension": "The space race and faith in technical progress: the future is designed like a mass-produced product, clean and optimistic.",
+      "material": "Fibreglass and resin, vinyl, stiff fabrics and PVC. Smooth, white, industrial surfaces with no trace of the hand.",
+      "artifacts": "Short A-line dress and white boots by Courrèges. Eero Aarnio's Ball Chair: a hollow sphere the body steps into and withdraws inside.",
+      "gesture": "The body is freed and geometric: bare legs, a quick stride. The seat wraps around its occupant and separates them from the space outside.",
+      "decomposition": "The white yellows and the fibreglass cracks. The clean utopia survives as a retro-futurist quotation, nostalgia for a future that never came."
     },
     "verified": false,
-    "to_verify": "Date controllate su fonti. Resta da decidere il legame con la corsa allo spazio: Aarnio stesso dice che non era voluto e che la coincidenza con il volo di Gagarin fu casuale.",
+    "to_verify": "Dates checked against sources. Still to decide: the link with the space race. Aarnio himself says it was not intended and that the timing with Gagarin's flight was a coincidence.",
     "images": [
       {
         "slot": "fashion",
@@ -99,24 +99,24 @@
     "title": "Plastic Pop & Metal Couture",
     "fashion": {
       "designer": "Paco Rabanne",
-      "artifact": "'12 abiti inindossabili in materiali contemporanei', Parigi, 1966"
+      "artifact": "'12 Unwearable Dresses in Contemporary Materials', Paris, 1966"
     },
     "design": {
       "designer": "Verner Panton",
-      "artifact": "Panton Chair: presentata nel 1967, produzione in serie con Vitra dal 1968"
+      "artifact": "Panton Chair: shown in 1967, serial production with Vitra from 1968"
     },
     "layers": {
-      "tension": "Corsa allo spazio e fiducia nei materiali sintetici: il corpo e la casa diventano superfici della stessa industria.",
-      "material": "Dischi di Rhodoid e anelli di metallo, plastica e filo senza tessuto. Poliestere rinforzato con fibra di vetro, poi schiuma poliuretanica stampata.",
-      "artifacts": "Abiti di Rabanne in plastica e anelli, composti come una maglia. Panton Chair: una sedia in un solo pezzo, senza gambe.",
-      "gesture": "Il corpo viene assemblato più che vestito. La sedia si siede come una curva continua, senza giunzioni.",
-      "decomposition": "La plastica che prometteva futuro non regge: la produzione della Panton si ferma nel 1979 perché il polistirene non è abbastanza durevole, e il materiale va riformulato più volte."
+      "tension": "The space race and faith in synthetic materials: the body and the home become surfaces of the same industry.",
+      "material": "Rhodoid discs and metal rings, plastic and wire with no fabric. Fibreglass-reinforced polyester, then moulded polyurethane foam.",
+      "artifacts": "Rabanne's dresses in plastic and rings, assembled like mail. The Panton Chair: a chair in a single piece, with no legs.",
+      "gesture": "The body is assembled rather than dressed. The chair is sat in as one continuous curve, with no joints.",
+      "decomposition": "The plastic that promised a future does not hold: Panton production stops in 1979 because polystyrene is not durable enough, and the material has to be reformulated several times."
     },
     "verified": false,
-    "to_verify": "La fonte del Museum at FIT data l'abito da sposa al 1968 ma lo mostra su Vogue del giugno 1966: scegliere il capo da mostrare. Aggiungere una fonte sulla frase 'Rhodoid e anelli' (la fonte FIT parla di plastica e anelli metallici).",
+    "to_verify": "The Museum at FIT dates the wedding dress to 1968 but shows it in Vogue, June 1966: choose which piece to show. Add a source for the phrase 'Rhodoid and rings' (the FIT source says plastic and metal rings).",
     "sources": [
       {
-        "label": "The Museum at FIT · Rabanne, abito da sposa",
+        "label": "The Museum at FIT · Rabanne wedding dress",
         "url": "https://exhibitions.fitnyc.edu/all-that-glitters/paco-rabanne-wedding-dress-1968/"
       },
       {
@@ -182,22 +182,22 @@
     ],
     "title": "Industrial Punk & Radical Design",
     "fashion": {
-      "designer": "Vivienne Westwood e Malcolm McLaren",
-      "artifact": "Boutique al 430 di King's Road: SEX (1974–76), poi Seditionaries (1976–79)"
+      "designer": "Vivienne Westwood and Malcolm McLaren",
+      "artifact": "Shop at 430 King's Road: SEX (1974–76), then Seditionaries (1976–79)"
     },
     "design": {
       "designer": "Superstudio",
-      "artifact": "Monumento Continuo, 1969–70; Supersuperficie / Atti fondamentali, 1972–73"
+      "artifact": "Continuous Monument, 1969–70; Supersurface / Fundamental Acts, 1972–73"
     },
     "layers": {
-      "tension": "Crisi economica e sfiducia nelle istituzioni. L'abito e l'architettura diventano un gesto contro il buon gusto e contro l'idea di progresso lineare.",
-      "material": "Gomma, pelle, cerniere, catene e spille da balia. Nei progetti di Superstudio, la griglia e il laminato: materiali industriali usati come provocazione.",
-      "artifacts": "Capi della boutique Seditionaries. Collage del Monumento Continuo e della Supersuperficie: una struttura che copre il pianeta.",
-      "gesture": "Postura rigida e frontale, abiti che costringono e segnalano. Il corpo viene marcato e legato. Nei disegni di Superstudio, scompare dentro una griglia infinita.",
-      "decomposition": "La provocazione viene assorbita dal mercato: lo strappo diventa un'estetica riproducibile e i collage radicali finiscono in museo."
+      "tension": "Economic crisis and distrust of institutions. Clothing and architecture become a gesture against good taste and against the idea of linear progress.",
+      "material": "Rubber, leather, zips, chains and safety pins. In Superstudio's projects, the grid and laminate: industrial materials used as provocation.",
+      "artifacts": "Garments from the Seditionaries shop. Collages of the Continuous Monument and the Supersurface: a structure that covers the planet.",
+      "gesture": "Rigid, frontal posture, clothes that restrain and signal. The body is marked and bound. In Superstudio's drawings, it disappears into an infinite grid.",
+      "decomposition": "The provocation is absorbed by the market: the tear becomes a reproducible aesthetic and the radical collages end up in museums."
     },
     "verified": false,
-    "to_verify": "Date di boutique e Superstudio controllate. Resta da verificare quale capo mostrare (la boutique non ha un capo unico) e la lettura 'contro il progresso lineare' (Tafuri la giudicò autopromozione).",
+    "to_verify": "Shop and Superstudio dates checked. Still to verify: which garment to show (the shop has no single piece) and the reading 'against linear progress' (Tafuri judged it self-advertising).",
     "images": [
       {
         "slot": "fashion",
@@ -254,7 +254,7 @@
     ],
     "sources": [
       {
-        "label": "NGV · Westwood e Kawakubo, cronologia",
+        "label": "NGV · Westwood and Kawakubo timeline",
         "url": "https://www.ngv.vic.gov.au/labels/westwood-kawakubo-timeline/"
       },
       {
@@ -272,25 +272,25 @@
     ],
     "title": "Portable Solitude & Black Japan",
     "fashion": {
-      "designer": "Rei Kawakubo / Comme des Garçons e Yohji Yamamoto",
-      "artifact": "Debutto a Parigi, 1981; collezione Holes (Destroy), autunno-inverno 1982-83"
+      "designer": "Rei Kawakubo / Comme des Garçons and Yohji Yamamoto",
+      "artifact": "Paris debut, 1981; Holes (Destroy) collection, autumn-winter 1982-83"
     },
     "design": {
       "designer": "Sony",
-      "artifact": "Walkman TPS-L2, Giappone, 1 luglio 1979 (negli USA da giugno 1980)"
+      "artifact": "Walkman TPS-L2, Japan, 1 July 1979 (US release June 1980)"
     },
     "layers": {
-      "tension": "Intimità privata in spazio pubblico: l'ascolto individuale e il nero totale come rifiuto dello sguardo degli altri.",
-      "material": "Plastica e metallo del lettore a cassette. Lana e cotone neri, tagli e buchi lasciati nel tessuto.",
-      "artifacts": "Sony TPS-L2: 33.000 yen, con due prese cuffia per ascoltare in due. Comme des Garçons e Yohji Yamamoto a Parigi dal 1981; la collezione 'Holes' è del 1982-83.",
-      "gesture": "Camminare con le cuffie senza accorgersi di chi sta intorno; vestirsi in strati neri e asimmetrici che nascondono la sagoma.",
-      "decomposition": "Quello che sembrava maleducato diventa normale: l'ascolto isolato non scandalizza più. Il buco nel tessuto, nato come shock, diventa uno stile riproducibile."
+      "tension": "Private intimacy in public space: individual listening and total black as a refusal of other people's gaze.",
+      "material": "Plastic and metal of the cassette player. Black wool and cotton, cuts and holes left in the fabric.",
+      "artifacts": "Sony TPS-L2: 33,000 yen, with two headphone sockets so two people could listen. Comme des Garçons and Yohji Yamamoto in Paris from 1981; the 'Holes' collection is from 1982-83.",
+      "gesture": "Walking with headphones on, unaware of those around you; dressing in black, asymmetric layers that hide the silhouette.",
+      "decomposition": "What seemed rude becomes normal: isolated listening no longer shocks. The hole in the fabric, born as a shock, becomes a reproducible style."
     },
     "verified": false,
-    "to_verify": "Il nome 'Hiroshima chic' usato dalla stampa nel 1981 va confermato con una fonte (non trovata). L'abbinamento Walkman–Kawakubo è una nostra lettura, non un legame storico.",
+    "to_verify": "The name 'Hiroshima chic' used by the press in 1981 needs a source (none found). The Walkman–Kawakubo pairing is our own reading, not a historical link.",
     "sources": [
       {
-        "label": "NGV · Westwood e Kawakubo, cronologia",
+        "label": "NGV · Westwood and Kawakubo timeline",
         "url": "https://www.ngv.vic.gov.au/labels/westwood-kawakubo-timeline/"
       },
       {
@@ -357,21 +357,21 @@
     "title": "Suburban Hyper-Consumerism & Memphis",
     "fashion": {
       "designer": "Moncler",
-      "artifact": "Piumino Moncler, divisa dei paninari milanesi"
+      "artifact": "Moncler puffer jacket, uniform of the Milanese paninari"
     },
     "design": {
       "designer": "Ettore Sottsass / Memphis",
-      "artifact": "Libreria Carlton, 1981"
+      "artifact": "Carlton bookcase, 1981"
     },
     "layers": {
-      "tension": "Boom dei consumi e cultura del marchio. L'identità si compra, e i gruppi giovanili si riconoscono attraverso etichette e colori.",
-      "material": "Nylon lucido imbottito di piumino, laminato plastico decorato, superfici a motivi grafici. Il materiale povero diventa decorazione.",
-      "artifacts": "Piumino Moncler, indossato dai giovani paninari italiani. Libreria Carlton di Sottsass per il gruppo Memphis, nato a Milano.",
-      "gesture": "Il corpo si gonfia e si protegge sotto il volume del capo. La libreria è un totem colorato più che un contenitore.",
-      "decomposition": "Il colore sbiadisce e l'imbottitura si schiaccia. Il marchio sopravvive come status, e il design Memphis passa da scandalo a classico da collezione."
+      "tension": "Consumer boom and brand culture. Identity is bought, and youth groups recognise each other through labels and colours.",
+      "material": "Glossy nylon padded with down, decorated plastic laminate, graphic-pattern surfaces. Cheap material becomes decoration.",
+      "artifacts": "Moncler puffer jacket, worn by young Italian paninari. Sottsass's Carlton bookcase for the Memphis group, born in Milan.",
+      "gesture": "The body swells and shelters under the volume of the garment. The bookcase is a coloured totem more than a container.",
+      "decomposition": "The colour fades and the padding flattens. The brand survives as status, and Memphis design goes from scandal to collectable classic."
     },
     "verified": false,
-    "to_verify": "Memphis (fondata il 6 dicembre 1980, sciolta nel 1987) e Carlton (1981) controllate. Manca una fonte sul momento preciso in cui il piumino Moncler diventa simbolo dei paninari.",
+    "to_verify": "Memphis (founded 6 December 1980, dissolved 1987) and Carlton (1981) checked. No source yet on the exact moment the Moncler jacket becomes a paninari symbol.",
     "images": [
       {
         "slot": "fashion",
@@ -447,21 +447,21 @@
     "title": "Darkwave / Industrial Cryptography",
     "fashion": {
       "designer": "Maison Martin Margiela",
-      "artifact": "Prima collezione, primavera-estate 1989, Café de la Gare, Parigi; scarpa Tabi dal 1989"
+      "artifact": "First collection, spring-summer 1989, Café de la Gare, Paris; Tabi shoe from 1989"
     },
     "design": {
       "designer": "Philippe Starck",
-      "artifact": "Juicy Salif per Alessi: schizzo del 1988, in produzione dal 1990"
+      "artifact": "Juicy Salif for Alessi: sketched in 1988, in production from 1990"
     },
     "layers": {
-      "tension": "Anonimato contro culto della griffe: cancellare il nome e mostrare la costruzione, mentre il design diventa icona mediatica.",
-      "material": "Cotone grezzo, etichetta bianca cucita con quattro punti visibili, alluminio fuso e finiture satinate che nascondono l'autore.",
-      "artifacts": "Capi e scarpe Tabi della Maison Martin Margiela. Spremiagrumi Juicy Salif di Starck: una struttura a tre gambe che somiglia a un insetto.",
-      "gesture": "Volto coperto, corpo senza nome: il gesto è sparire. L'oggetto resta in piedi come una creatura sul tavolo, più che come strumento.",
-      "decomposition": "L'anonimato diventa a sua volta un marchio riconoscibile. L'oggetto-scultura smette di funzionare ed è esposto invece di essere usato."
+      "tension": "Anonymity against the cult of the label: erasing the name and showing the construction, while design becomes a media icon.",
+      "material": "Raw cotton, a white label sewn with four visible stitches, cast aluminium and satin finishes that hide the author.",
+      "artifacts": "Garments and Tabi shoes by Maison Martin Margiela. Starck's Juicy Salif squeezer: a three-legged structure that looks like an insect.",
+      "gesture": "Face covered, body without a name: the gesture is to disappear. The object stands like a creature on the table rather than a tool.",
+      "decomposition": "Anonymity itself becomes a recognisable brand. The sculpture-object stops working and is displayed instead of used."
     },
     "verified": false,
-    "to_verify": "Date controllate. La coppia Margiela–Starck è un contrasto (anonimato contro designer-star), non un legame diretto con il darkwave: confermare questa lettura o cambiare oggetto. L'anno dell'etichetta bianca non è documentato nelle fonti trovate.",
+    "to_verify": "Dates checked. The Margiela–Starck pair is a contrast (anonymity against star designer), not a direct link with darkwave: confirm this reading or change the object. The year of the white label is not documented in the sources found.",
     "images": [
       {
         "slot": "fashion",
@@ -537,21 +537,21 @@
     "title": "Tactical Cyberpunk",
     "fashion": {
       "designer": "Vexed Generation",
-      "artifact": "Capispalla tecnici, Londra, dal 1994"
+      "artifact": "Technical outerwear, London, from 1994"
     },
     "design": {
-      "designer": "Apple / Jonathan Ive e il suo team",
-      "artifact": "iMac G3: annunciato il 6 maggio 1998, in vendita da agosto 1998"
+      "designer": "Apple / Jonathan Ive and his team",
+      "artifact": "iMac G3: announced 6 May 1998, on sale from August 1998"
     },
     "layers": {
-      "tension": "Sorveglianza, inquinamento e rete. L'abito si fa armatura urbana, mentre il computer entra in casa come oggetto colorato e amichevole.",
-      "material": "Nylon tecnico, imbottiture, cappucci e maschere antismog. Policarbonato traslucido colorato per la scocca del computer.",
-      "artifacts": "Capispalla di Vexed Generation con colletto alto e cappuccio. iMac G3 nel colore Bondi Blue: l'elettronica che mostra l'interno attraverso la plastica.",
-      "gesture": "Postura chiusa, volto semi-coperto, movimento rapido in città. Davanti allo schermo il corpo si siede e guarda dentro.",
-      "decomposition": "Il policarbonato ingiallisce e si graffia. Il futuro tattico diventa costume, e il computer colorato diventa pezzo da collezione."
+      "tension": "Surveillance, pollution and the network. Clothing becomes urban armour, while the computer enters the home as a colourful, friendly object.",
+      "material": "Technical nylon, padding, hoods and anti-smog masks. Coloured translucent polycarbonate for the computer's shell.",
+      "artifacts": "Vexed Generation outerwear with a high collar and hood. The iMac G3 in Bondi Blue: electronics that show their insides through the plastic.",
+      "gesture": "Closed posture, half-covered face, quick movement through the city. In front of the screen the body sits and looks inside.",
+      "decomposition": "The polycarbonate yellows and scratches. The tactical future becomes costume, and the colourful computer becomes a collector's piece."
     },
     "verified": false,
-    "to_verify": "Fondazione di Vexed nel 1994 (da Wikipedia; un'altra fonte dice solo 'metà anni Novanta'). Capi esatti da mostrare (parka, maschera) non confermati dalle fonti. Il testo 'padding contro cariche della polizia' viene da una fonte, non da noi.",
+    "to_verify": "Vexed's founding in 1994 (from Wikipedia; another source says only 'mid-1990s'). The exact garments to show (parka, mask) are not confirmed by the sources. The phrase 'padding against police charges' comes from a source, not from us.",
     "images": [
       {
         "slot": "fashion",
@@ -631,21 +631,21 @@
     "title": "Y2K Utopianism & Liquid Digital",
     "fashion": {
       "designer": "Hussein Chalayan",
-      "artifact": "Afterwords, autunno-inverno 2000, Londra (febbraio 2000)"
+      "artifact": "Afterwords, autumn-winter 2000, London (February 2000)"
     },
     "design": {
       "designer": "Apple",
-      "artifact": "iPod di prima generazione: annunciato il 23 ottobre 2001, in vendita dal 10 novembre"
+      "artifact": "First-generation iPod: announced 23 October 2001, on sale from 10 November"
     },
     "layers": {
-      "tension": "Ottimismo digitale di fine millennio e paura del collasso informatico. Tutto diventa liquido, lucido e portatile.",
-      "material": "Fodere grigie, legno, plastica bianca, acciaio lucido. Superfici che riflettono e superfici di casa.",
-      "artifacts": "Afterwords di Chalayan: un salotto in passerella, le fodere delle sedie diventano abiti e il tavolo diventa una gonna rigida. iPod di prima generazione: 5 GB, 1000 brani, 399 dollari, rotellina e retro in acciaio.",
-      "gesture": "Il corpo evacua portando la casa addosso; il pollice scorre sulla rotella, le cuffie sono bianche. Si ascolta in movimento, isolati nella città.",
-      "decomposition": "Il lucido si riga e la batteria muore. Il formato scompare con lo streaming, e l'estetica torna come nostalgia."
+      "tension": "Digital optimism at the end of the millennium and fear of computer collapse. Everything becomes liquid, glossy and portable.",
+      "material": "Grey slipcovers, wood, white plastic, polished steel. Surfaces that reflect and surfaces of the home.",
+      "artifacts": "Chalayan's Afterwords: a living room on the runway, chair covers become dresses and the table becomes a rigid skirt. First-generation iPod: 5 GB, 1,000 songs, 399 dollars, scroll wheel and steel back.",
+      "gesture": "The body evacuates carrying the home on itself; the thumb slides on the wheel, the headphones are white. Listening on the move, isolated in the city.",
+      "decomposition": "The gloss scratches and the battery dies. The format disappears with streaming, and the aesthetic returns as nostalgia."
     },
     "verified": false,
-    "to_verify": "Rabanne è stato spostato nel reperto 002 (anni '60). Resta da decidere se Chalayan (2000) rappresenta bene l'ottimismo digitale: la collezione parla di sfollamento e guerra. Il periodo arriva al 2005, oltre il 2000 del titolo.",
+    "to_verify": "Rabanne has moved to specimen 002 (1960s). Still to decide whether Chalayan (2000) represents digital optimism well: the collection is about displacement and war. The period runs to 2005, beyond the 2000 of the title.",
     "images": [
       {
         "slot": "fashion",
@@ -706,7 +706,7 @@
         "url": "https://www.designboom.com/design/2000-hussein-chalayan-collection-living-room-after-words/"
       },
       {
-        "label": "History.com · primo iPod",
+        "label": "History.com · first iPod",
         "url": "https://www.history.com/this-day-in-history/october-23/first-ipod"
       }
     ]

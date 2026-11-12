@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,54 +12,54 @@
     <header class="masthead panel">
       <div class="brand">
         <h1>STHETICS<span class="sep">//</span>ARCHAEOLOGY</h1>
-        <p>Archivio clinico del design industriale e delle sottoculture, 1960–2000</p>
+        <p>Clinical archive of industrial design and subcultures, 1960–2000</p>
       </div>
       <dl class="meta">
-        <div><dt>Campioni</dt><dd id="meta-count">0</dd></div>
-        <div><dt>Verificati</dt><dd id="meta-verified">0</dd></div>
-        <div><dt>Ora archivio</dt><dd id="clock">--:--:--</dd></div>
+        <div><dt>Specimens</dt><dd id="meta-count">0</dd></div>
+        <div><dt>Verified</dt><dd id="meta-verified">0</dd></div>
+        <div><dt>Archive time</dt><dd id="clock">--:--:--</dd></div>
       </dl>
     </header>
 
-    <nav class="views" aria-label="Viste dell'archivio">
+    <nav class="views" aria-label="Archive views">
       <button type="button" id="nav-infinite" data-view="infinite">[00. INFINITE VIEW]</button>
       <button type="button" id="nav-catalogue" data-view="catalogue">[01. CATALOGUE GRID]</button>
       <button type="button" id="nav-dossier" data-view="dossier">[02. CLINICAL DOSSIER]</button>
-      <button type="button" id="nav-deposit" data-view="deposit">[04. DEPOSITA UN'IMMAGINE]</button>
-      <button type="button" id="nav-moodboard" data-view="moodboard" aria-disabled="true">[03. MOODBOARD MATRIX]<small>in arrivo</small></button>
+      <button type="button" id="nav-deposit" data-view="deposit">[04. DEPOSIT AN IMAGE]</button>
+      <button type="button" id="nav-moodboard" data-view="moodboard" aria-disabled="true">[03. MOODBOARD MATRIX]<small>coming soon</small></button>
     </nav>
 
     <main>
       <!-- 00. INFINITE VIEW -->
       <section id="view-infinite" class="panel" aria-label="Infinite view" hidden>
-        <div id="inf-vp" class="inf-vp" tabindex="0" aria-label="Vista infinita dell'archivio. Per navigare da tastiera usa il catalogo.">
+        <div id="inf-vp" class="inf-vp" tabindex="0" aria-label="Infinite view of the archive. For keyboard navigation use the catalogue.">
           <div id="inf-world" class="inf-world"></div>
           <div id="inf-years" class="inf-years" aria-hidden="true"></div>
           <a class="hud hud-tl" href="#catalogue">&lsaquo; To Catalogue View</a>
-          <a class="hud hud-dep" href="#deposit">+ Deposita immagine</a>
+          <a class="hud hud-dep" href="#deposit">+ Deposit image</a>
           <div class="hud hud-tr">
-            <button type="button" id="inf-zoom-out" aria-label="Riduci">−</button>
-            <button type="button" id="inf-zoom-in" aria-label="Ingrandisci">+</button>
-            <button type="button" id="inf-reset" aria-label="Riporta all'inizio">0</button>
+            <button type="button" id="inf-zoom-out" aria-label="Zoom out">−</button>
+            <button type="button" id="inf-zoom-in" aria-label="Zoom in">+</button>
+            <button type="button" id="inf-reset" aria-label="Back to start">0</button>
           </div>
           <div class="hud hud-bl" id="hud-coord">X 0 · Y 0</div>
         </div>
-        <p class="hint">In alto 1960, in basso 2005 · trascina per spostarti · rotella per scorrere · Ctrl + rotella o + / − per lo zoom · un clic su un'immagine apre il dossier del suo reperto; passandoci sopra diventa a colori.
-          Le immagini arrivano da Wikimedia Commons (autore e licenza nella sezione Provenienza) e dai file in assets/.</p>
+        <p class="hint">1960 at the top, 2005 at the bottom · drag to move · scroll to move vertically · Ctrl + scroll or + / − to zoom · click an image to open its specimen dossier; hover to see it in colour.
+          Images come from Wikimedia Commons (author and licence in the Provenance section) and from files in assets/.</p>
       </section>
 
       <!-- 01. CATALOGUE GRID -->
       <section id="view-catalogue" class="panel" aria-label="Catalogue grid" hidden>
         <div class="ruler-block">
-          <p class="label">Righello cronologico 1960–2005</p>
+          <p class="label">Chronological ruler 1960–2005</p>
           <div id="ruler" class="ruler"></div>
         </div>
-        <a class="dep-cta" href="#deposit">+ Deposita un'immagine</a>
+        <a class="dep-cta" href="#deposit">+ Deposit an image</a>
         <div id="grid" class="grid"></div>
       </section>
 
       <!-- 04. DEPOSITO APERTO -->
-      <section id="view-deposit" class="panel" aria-label="Deposito aperto" hidden>
+      <section id="view-deposit" class="panel" aria-label="Open deposit" hidden>
         <div id="deposit"></div>
       </section>
 
@@ -74,7 +74,7 @@
       <ol id="log"></ol>
     </section>
 
-    <p class="credits-note">Le immagini sono in bianco e nero e diventano a colori al passaggio del mouse. Fonte, autore e licenza di ciascuna sono nella sezione Provenienza del dossier.</p>
+    <p class="credits-note">Images are shown in black and white and turn to colour on hover. Source, author and licence of each one are in the Provenance section of the dossier.</p>
 
   </div>
   <script src="config.js"></script>
