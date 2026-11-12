@@ -1,4 +1,4 @@
-// STHETICS // ARCHAEOLOGY — passo 2: vista infinita, 4 immagini per reperto con crediti, catalogo, dossier.
+// STHETICS // ARCHAEOLOGY — passo 3: muro infinito casuale, ricerca live su Wikimedia Commons, catalogo, dossier.
 
 const LAYERS = [
   { key: 'tension',       code: 'L1', label: 'Socio-Technological Tension' },
@@ -17,7 +17,7 @@ const SLOTS = [
 const YEAR_MIN = 1960;
 const YEAR_MAX = 2005;
 
-const state = { items: [], view: null, current: null };
+const state = { items: [], view: null, current: null, live: {} };
 const $ = (id) => document.getElementById(id);
 const mod = (n, m) => ((n % m) + m) % m;
 const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -29,6 +29,18 @@ function esc(str) {
 }
 const clockTime = () => new Date().toLocaleTimeString('it-IT');
 const slotOf = (key) => SLOTS.find((s) => s.key === key);
+const itemOf = (id) => state.items.find((i) => i.id === id);
+
+// Generatore pseudo-casuale con seme: il muro è casuale ma identico a ogni apertura.
+function rng(seed) {
+  let a = seed >>> 0;
+  return () => {
+    a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
 
 // ---------- LOG ----------
 const logLines = [];
@@ -38,6 +50,118 @@ function log(msg) {
   $('log').innerHTML = logLines
     .map((l) => `<li><time>[${esc(l.t)}]</time>${esc(l.msg)}</li>`)
     .join('');
+}
+
+// ---------- RICERCA LIVE SU WIKIMEDIA COMMONS ----------
+// Nessun server e nessuna chiave: l'API di Commons accetta richieste dal browser (origin=*).
+// Si tengono solo file con licenza CC0, pubblico dominio, CC BY, CC BY-SA. Autore e licenza finiscono nei crediti.
+const COMMONS = 'https://commons.wikimedia.org/w/api.php';
+const LIVE_KEY = 'archaeology-live-v1';
+const LIVE_TTL = 24 * 3600 * 1000;
+const PER_QUERY = 6;
+
+function licenseOk(name) {
+  const tokens = String(name || '').toLowerCase().split(/[\s\-_/]+/);
+  if (tokens.includes('nc') || tokens.includes('nd')) return false;
+  if (tokens.includes('cc0') || tokens.includes('pd') || (tokens.includes('public') && tokens.includes('domain'))) return true;
+  return tokens.includes('cc') && tokens.includes('by');
+}
+const plain = (html) =>
+  new DOMParser().parseFromString(String(html || ''), 'text/html').documentElement.textContent.trim();
+
+async function commonsSearch(job) {
+  const params = new URLSearchParams({
+    action: 'query', format: 'json', origin: '*',
+    prop: 'imageinfo', iiprop: 'url|size|mime|extmetadata', iiurlwidth: '640'
+  });
+  if (job.file) {
+    params.set('titles', job.file);
+  } else {
+    params.set('generator', 'search');
+    params.set('gsrnamespace', '6');
+    params.set('gsrlimit', '20');
+    params.set('gsrsearch', job.q + ' filetype:bitmap');
+  }
+  const res = await fetch(COMMONS + '?' + params.toString());
+  if (!res.ok) throw new Error(res.status);
+  const data = await res.json();
+  const pages = Object.values((data.query && data.query.pages) || {})
+    .sort((a, b) => (a.index || 0) - (b.index || 0));
+  const out = [];
+  for (const p of pages) {
+    const ii = p.imageinfo && p.imageinfo[0];
+    if (!ii || !['image/jpeg', 'image/png'].includes(ii.mime)) continue;
+    if ((ii.width || 0) < 600) continue;
+    const meta = ii.extmetadata || {};
+    const lic = meta.LicenseShortName && meta.LicenseShortName.value;
+    if (!licenseOk(lic)) continue;
+    const tw = ii.thumbwidth || ii.width, th = ii.thumbheight || ii.height;
+    const aspect = tw / th;
+    if (!(aspect > 0.4 && aspect < 2.6)) continue;
+    out.push({
+      id: job.id, slot: job.slot, src: ii.thumburl || ii.url, aspect,
+      credit: {
+        title: (p.title || '').replace(/^File:/, ''),
+        author: plain(meta.Artist && meta.Artist.value),
+        license: lic, url: ii.descriptionurl
+      }
+    });
+    if (out.length >= PER_QUERY) break;
+  }
+  return out;
+}
+
+async function loadLive() {
+  let cached = null;
+  try { cached = JSON.parse(localStorage.getItem(LIVE_KEY) || 'null'); } catch (e) { /* storage non disponibile */ }
+  if (cached && cached.v === 1 && cached.d && Date.now() - cached.t < LIVE_TTL) {
+    state.live = cached.d;
+    log(`LIVE SEARCH · DA CACHE · ${liveCount()} IMMAGINI`);
+    onPoolChanged(true);
+    return;
+  }
+  const jobs = [];
+  state.items.forEach((it) => (it.images || []).forEach((im) => {
+    if (!im.local && (im.query || im.commons_file)) jobs.push({ id: it.id, slot: im.slot, q: im.query, file: im.commons_file });
+  }));
+  if (!jobs.length) return;
+  log(`LIVE SEARCH · WIKIMEDIA COMMONS · ${jobs.length} QUERY`);
+
+  const live = {};
+  let next = 0, fail = 0;
+  const worker = async () => {
+    while (next < jobs.length) {
+      const job = jobs[next++];
+      try {
+        live[job.id + '|' + job.slot] = await commonsSearch(job);
+        state.live = Object.assign({}, live);
+        schedulePool();
+      } catch (err) {
+        fail++;
+      }
+    }
+  };
+  await Promise.all([worker(), worker(), worker(), worker()]);
+  state.live = live;
+  const n = liveCount();
+  log(fail ? `LIVE SEARCH · ${n} IMMAGINI · ${fail} QUERY FALLITE` : `LIVE SEARCH · ${n} IMMAGINI TROVATE`);
+  onPoolChanged(true);
+  if (!fail && n) {
+    try { localStorage.setItem(LIVE_KEY, JSON.stringify({ v: 1, t: Date.now(), d: live })); } catch (e) { /* ok */ }
+  }
+}
+const liveCount = () => Object.values(state.live).reduce((s, a) => s + a.length, 0);
+
+let poolTimer = 0;
+function schedulePool() {
+  clearTimeout(poolTimer);
+  poolTimer = setTimeout(() => onPoolChanged(false), 300);
+}
+// full = true: aggiorna anche il dossier aperto (si fa solo a ricerca conclusa, per non far saltare la pagina)
+function onPoolChanged(full) {
+  renderCatalogue();
+  if (full && state.view === 'dossier' && state.current) renderDossier(state.current);
+  if (INF.ready) { buildWall(); infUpdate(); }
 }
 
 // ---------- IMMAGINI ----------
@@ -63,10 +187,17 @@ function placeholder(item, slotKey) {
   return uri;
 }
 const imageOf = (item, slotKey) => (item.images || []).find((i) => i.slot === slotKey);
-const srcOf = (item, slotKey) => {
+
+// Tutte le immagini disponibili per uno slot: il file locale (se c'è) oppure i risultati della ricerca live.
+function entriesFor(item, slotKey) {
   const im = imageOf(item, slotKey);
-  return (im && im.file) || placeholder(item, slotKey);
-};
+  if (im && im.local && im.file) {
+    return [{ id: item.id, slot: slotKey, src: im.file, aspect: im.w && im.h ? im.w / im.h : 0.8, credit: im.credit || null, own: !im.credit }];
+  }
+  return state.live[item.id + '|' + slotKey] || [];
+}
+const bestEntry = (item, slotKey) => entriesFor(item, slotKey)[0] || null;
+const srcOf = (item, slotKey) => { const e = bestEntry(item, slotKey); return e ? e.src : placeholder(item, slotKey); };
 
 function figHTML(item, slotKey, lazy = true) {
   const s = slotOf(slotKey);
@@ -76,11 +207,11 @@ function figHTML(item, slotKey, lazy = true) {
       <span class="crop" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
     </span>`;
 }
-// Se il file in assets/ non esiste, ripiega sul placeholder
+// Se un file non si carica, ripiega sul placeholder
 function bindImgFallback(root) {
   root.querySelectorAll('img[data-id]').forEach((img) => {
     img.addEventListener('error', () => {
-      const item = state.items.find((i) => i.id === img.dataset.id);
+      const item = itemOf(img.dataset.id);
       img.onerror = null;
       if (item) img.src = placeholder(item, img.dataset.slot);
     }, { once: true });
@@ -124,10 +255,11 @@ function renderCatalogue() {
 // ---------- DOSSIER ----------
 function provenanceHTML(it) {
   return SLOTS.map((s) => {
-    const im = imageOf(it, s.key);
+    const e = bestEntry(it, s.key);
     const fig = `FIG. ${esc(it.id)}-${s.code}`;
-    const c = im && im.credit;
-    if (!c) return `<li>${fig} · ${esc(s.label)} · fonte da assegnare</li>`;
+    if (!e) return `<li>${fig} · ${esc(s.label)} · fonte da assegnare</li>`;
+    const c = e.credit;
+    if (!c) return `<li>${fig} · ${esc(s.label)} · file locale</li>`;
     const title = c.url
       ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.title || 'fonte')}</a>`
       : esc(c.title || 'fonte');
@@ -188,64 +320,115 @@ function renderDossier(id) {
   }));
 }
 
-// ---------- VISTA INFINITA ----------
-// Griglia di tavole che si ripete in ogni direzione: colonne = reperti (ordine cronologico, poi ricomincia),
-// righe = i 4 slot. Si creano solo le tavole visibili.
-const TILE_W = 220, TILE_H = 275, GAP = 20, CAP_H = 24;
-const PITCH_X = TILE_W + GAP;
-const PITCH_Y = TILE_H + CAP_H + GAP;
-const Z_MIN = 0.45, Z_MAX = 2;
-const INF = { x: 0, y: 0, z: 1, tiles: new Map(), ready: false, drag: null, raf: 0 };
+// ---------- MURO INFINITO ----------
+// Colonne di immagini con proporzioni naturali e partenza sfalsata, come nella reference.
+// Ogni "ricetta" di colonna è una sequenza casuale (con seme) di M immagini del pool, che si ripete
+// all'infinito in verticale. Le ricette R si ripetono in orizzontale. Si creano solo le tavole visibili.
+const COL_W = 250, GAP = 28, R = 9, M = 14;
+const Z_MIN = 0.4, Z_MAX = 2;
+const INF = { x: 0, y: 0, z: 1, z0: 1, tiles: new Map(), pool: [], cols: [], ready: false, drag: null, raf: 0, cap: '' };
 
-function makeTile(i, j) {
-  const item = state.items[mod(i, state.items.length)];
-  const slot = SLOTS[mod(j, SLOTS.length)];
+// Tutte le immagini del muro. Gli slot senza immagini diventano una tavola segnaposto con proporzioni variabili.
+const FALLBACK_ASPECTS = [0.72, 0.8, 1, 1.28, 0.66, 1.5, 0.9, 1.15];
+function buildPool() {
+  const pool = [];
+  state.items.forEach((it, ii) => SLOTS.forEach((s, si) => {
+    const list = entriesFor(it, s.key);
+    if (list.length) list.forEach((e) => pool.push(e));
+    else pool.push({ id: it.id, slot: s.key, src: null, aspect: FALLBACK_ASPECTS[(ii * 4 + si) % FALLBACK_ASPECTS.length], credit: null });
+  }));
+  return pool;
+}
+
+function buildWall() {
+  INF.pool = buildPool();
+  INF.cols = [];
+  for (let r = 0; r < R; r++) {
+    const rand = rng(1000 + r * 7919);
+    const seq = [];
+    let last = -1;
+    for (let k = 0; k < M; k++) {
+      let idx;
+      do { idx = Math.floor(rand() * INF.pool.length); } while (INF.pool.length > 1 && idx === last);
+      seq.push(idx);
+      last = idx;
+    }
+    const prefix = [0];
+    const hs = seq.map((idx) => Math.round(COL_W / Math.min(2.2, Math.max(0.45, INF.pool[idx].aspect))));
+    hs.forEach((h) => prefix.push(prefix[prefix.length - 1] + h + GAP));
+    INF.cols.push({ seq, hs, prefix, period: prefix[M], maxH: Math.max(...hs), y0: Math.floor(rand() * 520) });
+  }
+  INF.tiles.forEach((el) => el.remove());
+  INF.tiles.clear();
+}
+
+function makeTile(c, n, y) {
+  const col = INF.cols[mod(c, R)];
+  const k = mod(n, M);
+  const e = INF.pool[col.seq[k]];
+  const item = itemOf(e.id);
+  const s = slotOf(e.slot);
   const el = document.createElement('a');
   el.className = 'tile';
-  el.href = '#dossier-' + item.id;
+  el.href = '#dossier-' + e.id;
   el.tabIndex = -1;
   el.draggable = false;
-  el.style.left = i * PITCH_X + 'px';
-  el.style.top = j * PITCH_Y + 'px';
-  el.innerHTML = `${figHTML(item, slot.key)}<span class="tile-cap">#${esc(item.id)} · ${esc(slot.label)}</span>`;
-  bindImgFallback(el);
+  el.style.cssText = `left:${c * (COL_W + GAP)}px;top:${y}px;width:${COL_W}px;height:${col.hs[k]}px`;
+  const c2 = e.credit;
+  el.dataset.cap = `#${e.id} · ${s.label}` + (c2 ? ` · ${c2.author || c2.title || ''} · ${c2.license || ''}` : '');
+  const asPlaceholder = () => {
+    el.classList.add('ph');
+    el.innerHTML = `<span>#${esc(e.id)} · ${esc(s.label)}</span>`;
+  };
+  if (e.src) {
+    const img = document.createElement('img');
+    img.src = e.src;
+    img.alt = `Specimen ${e.id} · ${s.label}: ${item ? item.title : ''}`;
+    img.decoding = 'async';
+    img.draggable = false;
+    img.addEventListener('error', asPlaceholder, { once: true });
+    el.appendChild(img);
+  } else {
+    asPlaceholder();
+  }
   return el;
 }
 
 function infUpdate() {
-  if (!INF.ready || !state.items.length) return;
+  if (!INF.ready || !INF.cols.length) return;
   const vp = $('inf-vp'), world = $('inf-world');
   const W = vp.clientWidth, H = vp.clientHeight, z = INF.z;
-  const i0 = Math.floor(INF.x / PITCH_X) - 1, i1 = Math.ceil((INF.x + W / z) / PITCH_X) + 1;
-  const j0 = Math.floor(INF.y / PITCH_Y) - 1, j1 = Math.ceil((INF.y + H / z) / PITCH_Y) + 1;
+  const px = COL_W + GAP;
+  const c0 = Math.floor(INF.x / px) - 1, c1 = Math.ceil((INF.x + W / z) / px) + 1;
+  const ya = INF.y - 240, yb = INF.y + H / z + 240;
 
-  for (const [key, el] of INF.tiles) {
-    const [i, j] = key.split(',').map(Number);
-    if (i < i0 || i > i1 || j < j0 || j > j1) { el.remove(); INF.tiles.delete(key); }
-  }
-  for (let j = j0; j <= j1; j++) {
-    for (let i = i0; i <= i1; i++) {
-      const key = i + ',' + j;
-      if (!INF.tiles.has(key)) {
-        const el = makeTile(i, j);
-        world.appendChild(el);
-        INF.tiles.set(key, el);
+  const need = new Map();
+  for (let c = c0; c <= c1; c++) {
+    const col = INF.cols[mod(c, R)];
+    const cs = Math.floor((ya - col.y0 - col.maxH) / col.period);
+    const ce = Math.floor((yb - col.y0) / col.period);
+    for (let cyc = cs; cyc <= ce; cyc++) {
+      for (let k = 0; k < M; k++) {
+        const y = col.y0 + cyc * col.period + col.prefix[k];
+        if (y + col.hs[k] < ya || y > yb) continue;
+        const n = cyc * M + k;
+        need.set(c + ',' + n, { c, n, y });
       }
     }
   }
+  for (const [key, el] of INF.tiles) {
+    if (!need.has(key)) { el.remove(); INF.tiles.delete(key); }
+  }
+  for (const [key, t] of need) {
+    if (!INF.tiles.has(key)) {
+      const el = makeTile(t.c, t.n, t.y);
+      world.appendChild(el);
+      INF.tiles.set(key, el);
+    }
+  }
   world.style.transform = `translate(${-INF.x * z}px, ${-INF.y * z}px) scale(${z})`;
-  // linee di griglia strutturale che seguono la camera
-  vp.style.backgroundSize = `${PITCH_X * z}px ${PITCH_Y * z}px`;
-  vp.style.backgroundPosition = `${(-INF.x - GAP / 2) * z}px ${(-INF.y - GAP / 2) * z}px`;
-
-  const cx = INF.x + W / (2 * z), cy = INF.y + H / (2 * z);
-  const ci = Math.floor(cx / PITCH_X), cj = Math.floor(cy / PITCH_Y);
-  const item = state.items[mod(ci, state.items.length)];
-  const slot = SLOTS[mod(cj, SLOTS.length)];
-  const cycle = Math.floor(ci / state.items.length);
-  $('hud-where').textContent =
-    `#${item.id} · ${item.period} · ${slot.label.toUpperCase()} · CICLO ${cycle >= 0 ? '+' : ''}${cycle}`;
-  $('hud-coord').textContent = `X ${Math.round(cx)} · Y ${Math.round(cy)} · ZOOM ${z.toFixed(2)}`;
+  $('hud-coord').textContent = INF.cap ||
+    `X ${Math.round(INF.x + W / (2 * z))} · Y ${Math.round(INF.y + H / (2 * z))} · ZOOM ${z.toFixed(2)} · ${INF.pool.length} IMG`;
 }
 
 function infZoomAt(clientX, clientY, factor) {
@@ -261,11 +444,10 @@ function infZoomCenter(factor) {
   const r = $('inf-vp').getBoundingClientRect();
   infZoomAt(r.left + r.width / 2, r.top + r.height / 2, factor);
 }
-function infCenterOn(i, j) {
-  const vp = $('inf-vp');
-  INF.z = 1;
-  INF.x = i * PITCH_X + TILE_W / 2 - vp.clientWidth / 2;
-  INF.y = j * PITCH_Y + TILE_H / 2 - vp.clientHeight / 2;
+function infReset() {
+  INF.z = INF.z0;
+  INF.x = 0;
+  INF.y = 0;
   infUpdate();
 }
 
@@ -287,9 +469,11 @@ function infInit() {
   if (INF.ready) return;
   INF.ready = true;
   const vp = $('inf-vp');
+  INF.z0 = INF.z = window.innerWidth < 640 ? 0.7 : 1;
+  buildWall();
 
   vp.addEventListener('pointerdown', (e) => {
-    if (e.target.closest('.hud button')) return;
+    if (e.target.closest('.hud')) return;
     infStopInertia();
     vp.setPointerCapture(e.pointerId);
     vp.classList.add('grabbing');
@@ -325,6 +509,14 @@ function infInit() {
   vp.addEventListener('pointerup', end);
   vp.addEventListener('pointercancel', end);
 
+  // Didascalia dell'immagine sotto il cursore (al posto delle coordinate)
+  vp.addEventListener('mouseover', (e) => {
+    const t = e.target.closest('.tile');
+    const cap = t ? t.dataset.cap : '';
+    if (cap !== INF.cap) { INF.cap = cap; infUpdate(); }
+  });
+  vp.addEventListener('mouseleave', () => { if (INF.cap) { INF.cap = ''; infUpdate(); } });
+
   vp.addEventListener('wheel', (e) => {
     e.preventDefault();
     infStopInertia();
@@ -341,7 +533,7 @@ function infInit() {
     else if (k === 'ArrowDown') INF.y += step;
     else if (k === '+' || k === '=') { infZoomCenter(1.2); e.preventDefault(); return; }
     else if (k === '-') { infZoomCenter(1 / 1.2); e.preventDefault(); return; }
-    else if (k === '0') { infCenterOn(0, 1); e.preventDefault(); return; }
+    else if (k === '0') { infReset(); e.preventDefault(); return; }
     else return;
     e.preventDefault();
     infUpdate();
@@ -349,10 +541,8 @@ function infInit() {
 
   $('inf-zoom-in').addEventListener('click', () => infZoomCenter(1.25));
   $('inf-zoom-out').addEventListener('click', () => infZoomCenter(1 / 1.25));
-  $('inf-reset').addEventListener('click', () => infCenterOn(0, 1));
+  $('inf-reset').addEventListener('click', infReset);
   window.addEventListener('resize', () => { if (state.view === 'infinite') infUpdate(); });
-
-  infCenterOn(0, 1); // parte da #001, riga Design
 }
 
 // ---------- VISTE E ROUTING ----------
@@ -384,7 +574,7 @@ function route() {
   if (!state.items.length) return;
   const h = location.hash.replace('#', '');
   const m = h.match(/^dossier-(\d{3})$/);
-  if (m && state.items.some((i) => i.id === m[1])) showView('dossier', m[1]);
+  if (m && itemOf(m[1])) showView('dossier', m[1]);
   else if (h === 'catalogue') showView('catalogue');
   else showView('infinite');
 }
@@ -430,6 +620,7 @@ async function init() {
   log(`${verified}/${state.items.length} VERIFICATI · ${state.items.length - verified} IN BOZZA`);
   window.addEventListener('hashchange', route);
   route();
+  loadLive(); // riempie muro, catalogo e dossier appena arrivano i risultati
 }
 
 init();

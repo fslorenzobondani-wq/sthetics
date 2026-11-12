@@ -5,7 +5,7 @@ STHETICS // ARCHAEOLOGY — scarica le immagini da Wikimedia Commons.
 Per ogni reperto e ogni slot (moda, design, materiale, spazio) in data.json:
   1. cerca su Commons con il campo "query" (oppure usa "commons_file", se lo scrivi tu);
   2. tiene solo file con licenza CC0, pubblico dominio, CC BY o CC BY-SA (scarta NC e ND);
-  3. converte in bianco e nero, ritaglia 4:5, salva in assets/ (circa 100-200 KB);
+  3. converte in bianco e nero, non ritaglia (lato lungo max 1400), salva in assets/ (circa 100-200 KB);
   4. scrive in data.json la provenienza (titolo, autore, licenza, link) che il sito mostra nel dossier.
 
 Uso (dalla cartella del progetto):
@@ -34,7 +34,7 @@ API = 'https://commons.wikimedia.org/w/api.php'
 # Wikimedia chiede uno User-Agent descrittivo. Se ricevi errori 403, aggiungi un tuo contatto qui.
 USER_AGENT = 'STHETICS-ARCHAEOLOGY/1.0 (personal art archive; python-urllib)'
 MIN_WIDTH = 900
-OUT_SIZE = (1000, 1250)  # 4:5
+MAX_SIDE = 1400  # lato lungo massimo; le proporzioni originali restano
 PAUSE = 1.0              # secondi tra una richiesta e l'altra
 
 
@@ -120,15 +120,15 @@ def pick(pages):
 
 
 def to_archive_jpeg(raw):
-    """Bianco e nero, contrasto normalizzato, ritaglio 4:5, JPEG leggero."""
+    """Bianco e nero, contrasto normalizzato, nessun ritaglio, JPEG leggero. Restituisce (bytes, (w, h))."""
     from PIL import Image, ImageOps
     img = Image.open(io.BytesIO(raw))
     img = ImageOps.exif_transpose(img).convert('RGB')
     img = ImageOps.autocontrast(ImageOps.grayscale(img), cutoff=1)
-    img = ImageOps.fit(img, OUT_SIZE, method=Image.LANCZOS, centering=(0.5, 0.45))
+    img.thumbnail((MAX_SIDE, MAX_SIDE), Image.LANCZOS)
     out = io.BytesIO()
     img.save(out, 'JPEG', quality=82, optimize=True)
-    return out.getvalue()
+    return out.getvalue(), img.size
 
 
 def main(argv=None):
@@ -180,7 +180,9 @@ def main(argv=None):
                     failed += 1
                     continue
                 target.parent.mkdir(parents=True, exist_ok=True)
-                target.write_bytes(to_archive_jpeg(fetch_bytes(c['file_url'])))
+                data, size = to_archive_jpeg(fetch_bytes(c['file_url']))
+                target.write_bytes(data)
+                im.update({'local': True, 'w': size[0], 'h': size[1]})
                 im['credit'] = {
                     'title': c['title'].replace('File:', ''),
                     'author': c['author'],

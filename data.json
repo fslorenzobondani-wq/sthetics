@@ -30,28 +30,32 @@
         "file": "assets/001-fashion.jpg",
         "query": "Courrèges 1960s dress",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       },
       {
         "slot": "design",
         "file": "assets/001-design.jpg",
         "query": "Ball Chair Eero Aarnio",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       },
       {
         "slot": "material",
         "file": "assets/001-material.jpg",
         "query": "fibreglass texture close-up",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       },
       {
         "slot": "space",
         "file": "assets/001-space.jpg",
         "query": "Futuro house Matti Suuronen",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       }
     ]
   },
@@ -86,28 +90,32 @@
         "file": "assets/002-fashion.jpg",
         "query": "Seditionaries bondage trousers Westwood",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       },
       {
         "slot": "design",
         "file": "assets/002-design.jpg",
         "query": "Superstudio Continuous Monument",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       },
       {
         "slot": "material",
         "file": "assets/002-material.jpg",
         "query": "rubber latex texture close-up",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       },
       {
         "slot": "space",
         "file": "assets/002-space.jpg",
         "query": "World's End 430 King's Road shop",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       }
     ]
   },
@@ -142,28 +150,32 @@
         "file": "assets/003-fashion.jpg",
         "query": "Moncler puffer jacket 1980s",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       },
       {
         "slot": "design",
         "file": "assets/003-design.jpg",
         "query": "Memphis Group Carlton bookcase Sottsass",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       },
       {
         "slot": "material",
         "file": "assets/003-material.jpg",
         "query": "plastic laminate pattern 1980s",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       },
       {
         "slot": "space",
         "file": "assets/003-space.jpg",
         "query": "Memphis Milano interior 1980s",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       }
     ]
   },
@@ -198,28 +210,32 @@
         "file": "assets/004-fashion.jpg",
         "query": "Martin Margiela tabi boots",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       },
       {
         "slot": "design",
         "file": "assets/004-design.jpg",
         "query": "Juicy Salif Alessi Starck",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       },
       {
         "slot": "material",
         "file": "assets/004-material.jpg",
         "query": "cast aluminium surface close-up",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       },
       {
         "slot": "space",
         "file": "assets/004-space.jpg",
         "query": "1990s industrial warehouse interior",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       }
     ]
   },
@@ -254,28 +270,32 @@
         "file": "assets/005-fashion.jpg",
         "query": "Vexed Generation jacket",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       },
       {
         "slot": "design",
         "file": "assets/005-design.jpg",
         "query": "iMac G3 Bondi Blue",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       },
       {
         "slot": "material",
         "file": "assets/005-material.jpg",
         "query": "translucent polycarbonate close-up",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       },
       {
         "slot": "space",
         "file": "assets/005-space.jpg",
         "query": "iMac G3 office 1998",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       }
     ]
   },
@@ -310,28 +330,32 @@
         "file": "assets/006-fashion.jpg",
         "query": "Paco Rabanne chainmail dress",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       },
       {
         "slot": "design",
         "file": "assets/006-design.jpg",
         "query": "iPod first generation",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       },
       {
         "slot": "material",
         "file": "assets/006-material.jpg",
         "query": "brushed stainless steel macro",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       },
       {
         "slot": "space",
         "file": "assets/006-space.jpg",
         "query": "Millennium Dome 2000",
         "commons_file": null,
-        "credit": null
+        "credit": null,
+        "local": false
       }
     ]
   }

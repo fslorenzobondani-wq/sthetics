@@ -7,19 +7,22 @@ Archivio clinico del design industriale e delle sottoculture, 1960–2000. Solo 
 Nella radice del repository: `index.html`, `style.css`, `app.js`, `data.json`.
 Se usi le foto: anche la cartella `assets/`. La cartella `tools/` serve solo a te, non è necessario caricarla.
 
-## Come funzionano le immagini
+## Come arrivano le immagini
 
-Ogni reperto ha 4 foto, una per riga della Moodboard:
+Il sito riempie il muro da solo: all'apertura interroga Wikimedia Commons direttamente dal browser del visitatore (nessun server, nessuna chiave) usando le `query` di ogni reperto in `data.json`. Tiene solo file con licenza CC0, pubblico dominio, CC BY o CC BY-SA, li mostra in bianco e nero con le proporzioni originali e scrive autore e licenza nella sezione Provenienza del dossier. I risultati restano in cache nel browser per 24 ore.
 
-| Slot | Cosa mostra | File |
+Ogni reperto ha 4 slot (una riga della Moodboard):
+
+| Slot | Cosa mostra | File locale (facoltativo) |
 |---|---|---|
 | Moda | il capo o il look del reperto | `assets/001-fashion.jpg` |
 | Design | l'oggetto di design industriale | `assets/001-design.jpg` |
 | Materiale 40X | dettaglio ravvicinato del materiale | `assets/001-material.jpg` |
 | Spazio | contesto: interno, architettura, ambiente | `assets/001-space.jpg` |
 
-Il numero cambia da `001` a `006`. Se un file manca, il sito mostra una tavola grigia con il mirino.
-Le foto vanno già in bianco e nero (il sito applica comunque un filtro).
+Se in `data.json` uno slot ha `"local": true`, il sito usa il file in `assets/` (con `w` e `h` per le proporzioni) e non cerca online. Altrimenti usa la ricerca live; se anche quella non trova nulla, mostra una tavola tratteggiata.
+
+Per scegliere tu un'immagine precisa: scrivi in `commons_file` il titolo esatto del file di Commons (per esempio `"File:Ball Chair.jpg"`) oppure cambia `query`.
 
 ## Cosa cercare per ogni reperto (secondo la teoria)
 
@@ -36,7 +39,7 @@ Il campo "Materiale 40X" funziona meglio con una foto macro o al microscopio. Le
 
 ## Scaricare le foto in automatico (facoltativo)
 
-Lo script cerca su Wikimedia Commons, tiene solo file con licenza CC0, pubblico dominio, CC BY o CC BY-SA, li converte in bianco e nero e scrive fonte, autore e licenza in `data.json`. Il sito li mostra nella sezione Provenienza del dossier.
+Lo script cerca su Wikimedia Commons, tiene solo file con licenza CC0, pubblico dominio, CC BY o CC BY-SA, li converte in bianco e nero (senza ritagliare, lato lungo max 1400 px), imposta `local`, `w`, `h` e scrive fonte, autore e licenza in `data.json`. Il sito li mostra nella sezione Provenienza del dossier.
 
 ```
 pip install pillow

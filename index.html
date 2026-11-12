@@ -33,16 +33,16 @@
       <section id="view-infinite" class="panel" aria-label="Infinite view" hidden>
         <div id="inf-vp" class="inf-vp" tabindex="0" aria-label="Vista infinita dell'archivio. Per navigare da tastiera usa il catalogo.">
           <div id="inf-world" class="inf-world"></div>
-          <div class="hud hud-tl" id="hud-where" aria-live="off">—</div>
+          <a class="hud hud-tl" href="#catalogue">&lsaquo; To Catalogue View</a>
           <div class="hud hud-tr">
             <button type="button" id="inf-zoom-out" aria-label="Riduci">−</button>
             <button type="button" id="inf-zoom-in" aria-label="Ingrandisci">+</button>
-            <button type="button" id="inf-reset" aria-label="Riporta al centro">0</button>
+            <button type="button" id="inf-reset" aria-label="Riporta all'inizio">0</button>
           </div>
           <div class="hud hud-bl" id="hud-coord">X 0 · Y 0</div>
         </div>
-        <p class="hint">Trascina per spostarti · rotella per scorrere · Ctrl + rotella o + / − per lo zoom · clic su una tavola apre il dossier.
-          Colonne = reperti in ordine cronologico, righe = moda, design, materiale 40X, spazio. L'archivio si ripete: ogni ciclo riparte da #001.</p>
+        <p class="hint">Trascina per spostarti · rotella per scorrere · Ctrl + rotella o + / − per lo zoom · un clic su un'immagine apre il dossier del suo reperto.
+          Le immagini arrivano da Wikimedia Commons (autore e licenza nella sezione Provenienza) e dai file in assets/.</p>
       </section>
 
       <!-- 01. CATALOGUE GRID -->
@@ -65,7 +65,7 @@
       <ol id="log"></ol>
     </section>
 
-    <p class="credits-note">Le immagini sono convertite in bianco e nero. Fonte e licenza di ciascuna sono nella sezione Provenienza del dossier.</p>
+    <p class="credits-note">Le immagini sono mostrate in bianco e nero. Fonte, autore e licenza di ciascuna sono nella sezione Provenienza del dossier.</p>
 
   </div>
   <script src="app.js"></script>
