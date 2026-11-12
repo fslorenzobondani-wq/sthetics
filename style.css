@@ -255,3 +255,17 @@ button { font: inherit; color: inherit; }
 .dep-ok { margin: 0; padding: 10px 12px; border: 1px solid var(--ink); font-size: 13px; }
 .dep-save { display: grid; gap: 12px; }
 @media (max-width: 640px) { .dep-row { flex-direction: column; } .dep-row input { border-right: 1px solid var(--ink); border-bottom: 0; } }
+
+/* ---------- COLORE AL PASSAGGIO DEL MOUSE ---------- */
+.tile img, .fig img, .dep-fig img { transition: filter .35s ease; }
+.tile:hover img, .tile:focus-visible img, .plate:hover .fig img, .plate:focus-visible .fig img,
+.dossier-fig .fig:hover img, .dep-fig img:hover { filter: none; }
+@media (hover: none) { .dossier-fig .fig img, .dep-fig img { filter: none; } }
+@media (prefers-reduced-motion: reduce) { .tile img, .fig img, .dep-fig img { transition: none; } }
+
+/* pulsante "Deposita" nel muro */
+.hud-dep { left: auto; right: 12px; top: 54px; text-decoration: none; font-weight: 700; background: var(--ink); color: var(--paper); }
+.hud-dep:hover { background: var(--paper); color: var(--ink); }
+.dep-cta { display: inline-block; margin: 0 20px 14px; padding: 8px 14px; border: 1px solid var(--ink); text-decoration: none; color: var(--ink); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+.dep-cta:hover { background: var(--ink); color: var(--paper); }
+@media (max-width: 640px) { .hud-dep { top: auto; bottom: 12px; right: 12px; } }

@@ -25,7 +25,7 @@
       <button type="button" id="nav-infinite" data-view="infinite">[00. INFINITE VIEW]</button>
       <button type="button" id="nav-catalogue" data-view="catalogue">[01. CATALOGUE GRID]</button>
       <button type="button" id="nav-dossier" data-view="dossier">[02. CLINICAL DOSSIER]</button>
-      <button type="button" id="nav-deposit" data-view="deposit">[04. DEPOSITO APERTO]</button>
+      <button type="button" id="nav-deposit" data-view="deposit">[04. DEPOSITA UN'IMMAGINE]</button>
       <button type="button" id="nav-moodboard" data-view="moodboard" aria-disabled="true">[03. MOODBOARD MATRIX]<small>in arrivo</small></button>
     </nav>
 
@@ -36,6 +36,7 @@
           <div id="inf-world" class="inf-world"></div>
           <div id="inf-years" class="inf-years" aria-hidden="true"></div>
           <a class="hud hud-tl" href="#catalogue">&lsaquo; To Catalogue View</a>
+          <a class="hud hud-dep" href="#deposit">+ Deposita immagine</a>
           <div class="hud hud-tr">
             <button type="button" id="inf-zoom-out" aria-label="Riduci">−</button>
             <button type="button" id="inf-zoom-in" aria-label="Ingrandisci">+</button>
@@ -43,7 +44,7 @@
           </div>
           <div class="hud hud-bl" id="hud-coord">X 0 · Y 0</div>
         </div>
-        <p class="hint">In alto 1960, in basso 2005 · trascina per spostarti · rotella per scorrere · Ctrl + rotella o + / − per lo zoom · un clic su un'immagine apre il dossier del suo reperto.
+        <p class="hint">In alto 1960, in basso 2005 · trascina per spostarti · rotella per scorrere · Ctrl + rotella o + / − per lo zoom · un clic su un'immagine apre il dossier del suo reperto; passandoci sopra diventa a colori.
           Le immagini arrivano da Wikimedia Commons (autore e licenza nella sezione Provenienza) e dai file in assets/.</p>
       </section>
 
@@ -53,6 +54,7 @@
           <p class="label">Righello cronologico 1960–2005</p>
           <div id="ruler" class="ruler"></div>
         </div>
+        <a class="dep-cta" href="#deposit">+ Deposita un'immagine</a>
         <div id="grid" class="grid"></div>
       </section>
 
@@ -72,7 +74,7 @@
       <ol id="log"></ol>
     </section>
 
-    <p class="credits-note">Le immagini sono mostrate in bianco e nero. Fonte, autore e licenza di ciascuna sono nella sezione Provenienza del dossier.</p>
+    <p class="credits-note">Le immagini sono in bianco e nero e diventano a colori al passaggio del mouse. Fonte, autore e licenza di ciascuna sono nella sezione Provenienza del dossier.</p>
 
   </div>
   <script src="config.js"></script>
