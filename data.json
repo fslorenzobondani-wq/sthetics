@@ -9,11 +9,11 @@
     "title": "Space Age Rationalism",
     "fashion": {
       "designer": "André Courrèges",
-      "artifact": "Collezione Space Age, 1964"
+      "artifact": "Collezione Space Age, autunno 1964"
     },
     "design": {
       "designer": "Eero Aarnio",
-      "artifact": "Ball Chair, progetto 1963"
+      "artifact": "Ball Chair: schizzo del gennaio 1963, presentata alla fiera di Colonia nel 1966"
     },
     "layers": {
       "tension": "Corsa allo spazio e fiducia nel progresso tecnico: il futuro viene progettato come un prodotto di serie, pulito e ottimista.",
@@ -23,7 +23,7 @@
       "decomposition": "Il bianco ingiallisce e la fibra di vetro si crepa. L'utopia pulita sopravvive come citazione retro-futurista, nostalgia di un futuro mai realizzato."
     },
     "verified": false,
-    "to_verify": "Anno di presentazione della Ball Chair (1966) e data esatta della collezione Courrèges.",
+    "to_verify": "Date controllate su fonti. Resta da decidere il legame con la corsa allo spazio: Aarnio stesso dice che non era voluto e che la coincidenza con il volo di Gagarin fu casuale.",
     "images": [
       {
         "slot": "fashion",
@@ -77,10 +77,104 @@
           "Apollo mission control room"
         ]
       }
+    ],
+    "sources": [
+      {
+        "label": "Eero Aarnio Originals · Ball Chair",
+        "url": "https://www.aarniooriginals.com/pages/ball-chair"
+      },
+      {
+        "label": "Journal of Antiques · Courrèges, Space Age",
+        "url": "https://journalofantiques.com/digital-publications/joac-magazine/features/andre-courreges-space-age-fashion-designer/"
+      }
     ]
   },
   {
     "id": "002",
+    "period": "1966–1968",
+    "years": [
+      1966,
+      1968
+    ],
+    "title": "Plastic Pop & Metal Couture",
+    "fashion": {
+      "designer": "Paco Rabanne",
+      "artifact": "'12 abiti inindossabili in materiali contemporanei', Parigi, 1966"
+    },
+    "design": {
+      "designer": "Verner Panton",
+      "artifact": "Panton Chair: presentata nel 1967, produzione in serie con Vitra dal 1968"
+    },
+    "layers": {
+      "tension": "Corsa allo spazio e fiducia nei materiali sintetici: il corpo e la casa diventano superfici della stessa industria.",
+      "material": "Dischi di Rhodoid e anelli di metallo, plastica e filo senza tessuto. Poliestere rinforzato con fibra di vetro, poi schiuma poliuretanica stampata.",
+      "artifacts": "Abiti di Rabanne in plastica e anelli, composti come una maglia. Panton Chair: una sedia in un solo pezzo, senza gambe.",
+      "gesture": "Il corpo viene assemblato più che vestito. La sedia si siede come una curva continua, senza giunzioni.",
+      "decomposition": "La plastica che prometteva futuro non regge: la produzione della Panton si ferma nel 1979 perché il polistirene non è abbastanza durevole, e il materiale va riformulato più volte."
+    },
+    "verified": false,
+    "to_verify": "La fonte del Museum at FIT data l'abito da sposa al 1968 ma lo mostra su Vogue del giugno 1966: scegliere il capo da mostrare. Aggiungere una fonte sulla frase 'Rhodoid e anelli' (la fonte FIT parla di plastica e anelli metallici).",
+    "sources": [
+      {
+        "label": "The Museum at FIT · Rabanne, abito da sposa",
+        "url": "https://exhibitions.fitnyc.edu/all-that-glitters/paco-rabanne-wedding-dress-1968/"
+      },
+      {
+        "label": "Wikipedia · Panton Chair",
+        "url": "https://en.wikipedia.org/wiki/Panton_Chair"
+      }
+    ],
+    "images": [
+      {
+        "slot": "fashion",
+        "file": "assets/002-fashion.jpg",
+        "query": "Paco Rabanne 1966 plastic dress",
+        "commons_file": null,
+        "local": false,
+        "more": [
+          "Paco Rabanne chainmail dress 1960s",
+          "Rabanne wedding dress plastic discs",
+          "Space Age fashion 1966"
+        ]
+      },
+      {
+        "slot": "design",
+        "file": "assets/002-design.jpg",
+        "query": "Panton Chair Verner Panton",
+        "commons_file": null,
+        "local": false,
+        "more": [
+          "Verner Panton chair 1967",
+          "Panton S chair plastic",
+          "Vitra Panton Chair 1968"
+        ]
+      },
+      {
+        "slot": "material",
+        "file": "assets/002-material.jpg",
+        "query": "polyurethane foam texture close-up",
+        "commons_file": null,
+        "local": false,
+        "more": [
+          "fibreglass reinforced polyester surface",
+          "plastic discs close-up"
+        ]
+      },
+      {
+        "slot": "space",
+        "file": "assets/002-space.jpg",
+        "query": "Verner Panton Visiona 1970 interior",
+        "commons_file": null,
+        "local": false,
+        "more": [
+          "Panton Fun House 1960s",
+          "pop interior 1960s plastic furniture"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "003",
     "period": "1970–1979",
     "years": [
       1970,
@@ -89,11 +183,11 @@
     "title": "Industrial Punk & Radical Design",
     "fashion": {
       "designer": "Vivienne Westwood e Malcolm McLaren",
-      "artifact": "Seditionaries, Londra, dal 1976"
+      "artifact": "Boutique al 430 di King's Road: SEX (1974–76), poi Seditionaries (1976–79)"
     },
     "design": {
       "designer": "Superstudio",
-      "artifact": "Monumento Continuo, 1969 / Supersuperficie, 1971"
+      "artifact": "Monumento Continuo, 1969–70; Supersuperficie / Atti fondamentali, 1972–73"
     },
     "layers": {
       "tension": "Crisi economica e sfiducia nelle istituzioni. L'abito e l'architettura diventano un gesto contro il buon gusto e contro l'idea di progresso lineare.",
@@ -103,11 +197,11 @@
       "decomposition": "La provocazione viene assorbita dal mercato: lo strappo diventa un'estetica riproducibile e i collage radicali finiscono in museo."
     },
     "verified": false,
-    "to_verify": "Data del cambio di nome della boutique in Seditionaries e anno esatto della Supersuperficie.",
+    "to_verify": "Date di boutique e Superstudio controllate. Resta da verificare quale capo mostrare (la boutique non ha un capo unico) e la lettura 'contro il progresso lineare' (Tafuri la giudicò autopromozione).",
     "images": [
       {
         "slot": "fashion",
-        "file": "assets/002-fashion.jpg",
+        "file": "assets/003-fashion.jpg",
         "query": "Seditionaries bondage trousers Westwood",
         "commons_file": null,
         "credit": null,
@@ -120,7 +214,7 @@
       },
       {
         "slot": "design",
-        "file": "assets/002-design.jpg",
+        "file": "assets/003-design.jpg",
         "query": "Superstudio Continuous Monument",
         "commons_file": null,
         "credit": null,
@@ -134,7 +228,7 @@
       },
       {
         "slot": "material",
-        "file": "assets/002-material.jpg",
+        "file": "assets/003-material.jpg",
         "query": "rubber latex texture close-up",
         "commons_file": null,
         "credit": null,
@@ -146,7 +240,7 @@
       },
       {
         "slot": "space",
-        "file": "assets/002-space.jpg",
+        "file": "assets/003-space.jpg",
         "query": "World's End 430 King's Road shop",
         "commons_file": null,
         "credit": null,
@@ -157,10 +251,104 @@
           "radical architecture 1970s Italy"
         ]
       }
+    ],
+    "sources": [
+      {
+        "label": "NGV · Westwood e Kawakubo, cronologia",
+        "url": "https://www.ngv.vic.gov.au/labels/westwood-kawakubo-timeline/"
+      },
+      {
+        "label": "Wanted in Rome · Superstudio",
+        "url": "https://www.wantedinrome.com/news/superstudio-radical-italian-architecture.html"
+      }
     ]
   },
   {
-    "id": "003",
+    "id": "004",
+    "period": "1979–1982",
+    "years": [
+      1979,
+      1982
+    ],
+    "title": "Portable Solitude & Black Japan",
+    "fashion": {
+      "designer": "Rei Kawakubo / Comme des Garçons e Yohji Yamamoto",
+      "artifact": "Debutto a Parigi, 1981; collezione Holes (Destroy), autunno-inverno 1982-83"
+    },
+    "design": {
+      "designer": "Sony",
+      "artifact": "Walkman TPS-L2, Giappone, 1 luglio 1979 (negli USA da giugno 1980)"
+    },
+    "layers": {
+      "tension": "Intimità privata in spazio pubblico: l'ascolto individuale e il nero totale come rifiuto dello sguardo degli altri.",
+      "material": "Plastica e metallo del lettore a cassette. Lana e cotone neri, tagli e buchi lasciati nel tessuto.",
+      "artifacts": "Sony TPS-L2: 33.000 yen, con due prese cuffia per ascoltare in due. Comme des Garçons e Yohji Yamamoto a Parigi dal 1981; la collezione 'Holes' è del 1982-83.",
+      "gesture": "Camminare con le cuffie senza accorgersi di chi sta intorno; vestirsi in strati neri e asimmetrici che nascondono la sagoma.",
+      "decomposition": "Quello che sembrava maleducato diventa normale: l'ascolto isolato non scandalizza più. Il buco nel tessuto, nato come shock, diventa uno stile riproducibile."
+    },
+    "verified": false,
+    "to_verify": "Il nome 'Hiroshima chic' usato dalla stampa nel 1981 va confermato con una fonte (non trovata). L'abbinamento Walkman–Kawakubo è una nostra lettura, non un legame storico.",
+    "sources": [
+      {
+        "label": "NGV · Westwood e Kawakubo, cronologia",
+        "url": "https://www.ngv.vic.gov.au/labels/westwood-kawakubo-timeline/"
+      },
+      {
+        "label": "Electronics Notes · Sony Walkman",
+        "url": "https://www.electronics-notes.com/articles/history/audio-hifi-music-reproduction/sony-walkman.php"
+      }
+    ],
+    "images": [
+      {
+        "slot": "fashion",
+        "file": "assets/004-fashion.jpg",
+        "query": "Comme des Garçons 1982 holes sweater",
+        "commons_file": null,
+        "local": false,
+        "more": [
+          "Rei Kawakubo 1981 Paris collection",
+          "Yohji Yamamoto 1980s black",
+          "Comme des Garcons Destroy collection"
+        ]
+      },
+      {
+        "slot": "design",
+        "file": "assets/004-design.jpg",
+        "query": "Sony Walkman TPS-L2",
+        "commons_file": null,
+        "local": false,
+        "more": [
+          "Sony Walkman 1979",
+          "Walkman cassette player 1980s",
+          "Sony Walkman headphones 1980"
+        ]
+      },
+      {
+        "slot": "material",
+        "file": "assets/004-material.jpg",
+        "query": "black wool knit holes close-up",
+        "commons_file": null,
+        "local": false,
+        "more": [
+          "cassette tape close-up",
+          "black cotton fabric frayed edge"
+        ]
+      },
+      {
+        "slot": "space",
+        "file": "assets/004-space.jpg",
+        "query": "Tokyo street 1980s",
+        "commons_file": null,
+        "local": false,
+        "more": [
+          "Harajuku 1980s",
+          "Shibuya crossing 1980s"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "005",
     "period": "1980–1988",
     "years": [
       1980,
@@ -169,7 +357,7 @@
     "title": "Suburban Hyper-Consumerism & Memphis",
     "fashion": {
       "designer": "Moncler",
-      "artifact": "Piumino, anni '80"
+      "artifact": "Piumino Moncler, divisa dei paninari milanesi"
     },
     "design": {
       "designer": "Ettore Sottsass / Memphis",
@@ -183,11 +371,11 @@
       "decomposition": "Il colore sbiadisce e l'imbottitura si schiaccia. Il marchio sopravvive come status, e il design Memphis passa da scandalo a classico da collezione."
     },
     "verified": false,
-    "to_verify": "Quando il piumino Moncler diventa simbolo dei paninari. Date di fondazione di Memphis (1980) e della Carlton (1981).",
+    "to_verify": "Memphis (fondata il 6 dicembre 1980, sciolta nel 1987) e Carlton (1981) controllate. Manca una fonte sul momento preciso in cui il piumino Moncler diventa simbolo dei paninari.",
     "images": [
       {
         "slot": "fashion",
-        "file": "assets/003-fashion.jpg",
+        "file": "assets/005-fashion.jpg",
         "query": "Moncler puffer jacket 1980s",
         "commons_file": null,
         "credit": null,
@@ -200,7 +388,7 @@
       },
       {
         "slot": "design",
-        "file": "assets/003-design.jpg",
+        "file": "assets/005-design.jpg",
         "query": "Memphis Group Carlton bookcase Sottsass",
         "commons_file": null,
         "credit": null,
@@ -214,7 +402,7 @@
       },
       {
         "slot": "material",
-        "file": "assets/003-material.jpg",
+        "file": "assets/005-material.jpg",
         "query": "plastic laminate pattern 1980s",
         "commons_file": null,
         "credit": null,
@@ -226,7 +414,7 @@
       },
       {
         "slot": "space",
-        "file": "assets/003-space.jpg",
+        "file": "assets/005-space.jpg",
         "query": "Memphis Milano interior 1980s",
         "commons_file": null,
         "credit": null,
@@ -237,10 +425,20 @@
           "1980s suburban house interior"
         ]
       }
+    ],
+    "sources": [
+      {
+        "label": "Wikipedia · Memphis Group",
+        "url": "https://en.wikipedia.org/wiki/Memphis_Group"
+      },
+      {
+        "label": "AnOther · Paninari",
+        "url": "https://anothermag.com/fashion-beauty/9297/paninari-the-italian-originators-of-fast-food-in-fashion"
+      }
     ]
   },
   {
-    "id": "004",
+    "id": "006",
     "period": "1988–1994",
     "years": [
       1988,
@@ -249,11 +447,11 @@
     "title": "Darkwave / Industrial Cryptography",
     "fashion": {
       "designer": "Maison Martin Margiela",
-      "artifact": "Prima collezione, 1988 / scarpa Tabi"
+      "artifact": "Prima collezione, primavera-estate 1989, Café de la Gare, Parigi; scarpa Tabi dal 1989"
     },
     "design": {
       "designer": "Philippe Starck",
-      "artifact": "Juicy Salif per Alessi, 1990"
+      "artifact": "Juicy Salif per Alessi: schizzo del 1988, in produzione dal 1990"
     },
     "layers": {
       "tension": "Anonimato contro culto della griffe: cancellare il nome e mostrare la costruzione, mentre il design diventa icona mediatica.",
@@ -263,11 +461,11 @@
       "decomposition": "L'anonimato diventa a sua volta un marchio riconoscibile. L'oggetto-scultura smette di funzionare ed è esposto invece di essere usato."
     },
     "verified": false,
-    "to_verify": "Data della prima sfilata Margiela. La coppia con Starck non ha un legame diretto con il darkwave: serve una giustificazione o un altro oggetto.",
+    "to_verify": "Date controllate. La coppia Margiela–Starck è un contrasto (anonimato contro designer-star), non un legame diretto con il darkwave: confermare questa lettura o cambiare oggetto. L'anno dell'etichetta bianca non è documentato nelle fonti trovate.",
     "images": [
       {
         "slot": "fashion",
-        "file": "assets/004-fashion.jpg",
+        "file": "assets/006-fashion.jpg",
         "query": "Martin Margiela tabi boots",
         "commons_file": null,
         "credit": null,
@@ -280,7 +478,7 @@
       },
       {
         "slot": "design",
-        "file": "assets/004-design.jpg",
+        "file": "assets/006-design.jpg",
         "query": "Juicy Salif Alessi Starck",
         "commons_file": null,
         "credit": null,
@@ -294,7 +492,7 @@
       },
       {
         "slot": "material",
-        "file": "assets/004-material.jpg",
+        "file": "assets/006-material.jpg",
         "query": "cast aluminium surface close-up",
         "commons_file": null,
         "credit": null,
@@ -306,7 +504,7 @@
       },
       {
         "slot": "space",
-        "file": "assets/004-space.jpg",
+        "file": "assets/006-space.jpg",
         "query": "1990s industrial warehouse interior",
         "commons_file": null,
         "credit": null,
@@ -317,10 +515,20 @@
           "Berlin techno club 1990s"
         ]
       }
+    ],
+    "sources": [
+      {
+        "label": "Margiela's Granola · The Early Years",
+        "url": "https://margielassgranola.substack.com/p/maison-margiela-the-early-years"
+      },
+      {
+        "label": "Designboom · Juicy Salif",
+        "url": "https://www.designboom.com/design/game-philippe-starck-iconic-lemon-squeezer-juicy-salif-alessi/"
+      }
     ]
   },
   {
-    "id": "005",
+    "id": "007",
     "period": "1995–1999",
     "years": [
       1995,
@@ -332,8 +540,8 @@
       "artifact": "Capispalla tecnici, Londra, dal 1994"
     },
     "design": {
-      "designer": "Apple / Jonathan Ive",
-      "artifact": "iMac G3, 1998"
+      "designer": "Apple / Jonathan Ive e il suo team",
+      "artifact": "iMac G3: annunciato il 6 maggio 1998, in vendita da agosto 1998"
     },
     "layers": {
       "tension": "Sorveglianza, inquinamento e rete. L'abito si fa armatura urbana, mentre il computer entra in casa come oggetto colorato e amichevole.",
@@ -343,11 +551,11 @@
       "decomposition": "Il policarbonato ingiallisce e si graffia. Il futuro tattico diventa costume, e il computer colorato diventa pezzo da collezione."
     },
     "verified": false,
-    "to_verify": "Anno di fondazione di Vexed Generation, capi esatti da mostrare e attribuzione del design dell'iMac.",
+    "to_verify": "Fondazione di Vexed nel 1994 (da Wikipedia; un'altra fonte dice solo 'metà anni Novanta'). Capi esatti da mostrare (parka, maschera) non confermati dalle fonti. Il testo 'padding contro cariche della polizia' viene da una fonte, non da noi.",
     "images": [
       {
         "slot": "fashion",
-        "file": "assets/005-fashion.jpg",
+        "file": "assets/007-fashion.jpg",
         "query": "Vexed Generation jacket",
         "commons_file": null,
         "credit": null,
@@ -360,7 +568,7 @@
       },
       {
         "slot": "design",
-        "file": "assets/005-design.jpg",
+        "file": "assets/007-design.jpg",
         "query": "iMac G3 Bondi Blue",
         "commons_file": null,
         "credit": null,
@@ -374,7 +582,7 @@
       },
       {
         "slot": "material",
-        "file": "assets/005-material.jpg",
+        "file": "assets/007-material.jpg",
         "query": "translucent polycarbonate close-up",
         "commons_file": null,
         "credit": null,
@@ -386,7 +594,7 @@
       },
       {
         "slot": "space",
-        "file": "assets/005-space.jpg",
+        "file": "assets/007-space.jpg",
         "query": "iMac G3 office 1998",
         "commons_file": null,
         "credit": null,
@@ -397,10 +605,24 @@
           "Tokyo street night 1990s"
         ]
       }
+    ],
+    "sources": [
+      {
+        "label": "Wikipedia · Vexed Generation",
+        "url": "https://en.wikipedia.org/wiki/Vexed_Generation"
+      },
+      {
+        "label": "Le Petit Archive · Vexed Generation",
+        "url": "https://www.lepetitarchive.com/iconic-the-story-behind-vexed-generation/"
+      },
+      {
+        "label": "Neowin · iMac G3",
+        "url": "https://www.neowin.net/news/apples-first-i-product-the-imac-g3-was-announced-25-years-ago-today/"
+      }
     ]
   },
   {
-    "id": "006",
+    "id": "008",
     "period": "2000–2005",
     "years": [
       2000,
@@ -408,26 +630,26 @@
     ],
     "title": "Y2K Utopianism & Liquid Digital",
     "fashion": {
-      "designer": "Paco Rabanne",
-      "artifact": "Abiti in maglia metallica"
+      "designer": "Hussein Chalayan",
+      "artifact": "Afterwords, autunno-inverno 2000, Londra (febbraio 2000)"
     },
     "design": {
       "designer": "Apple",
-      "artifact": "iPod di prima generazione, 2001"
+      "artifact": "iPod di prima generazione: annunciato il 23 ottobre 2001, in vendita dal 10 novembre"
     },
     "layers": {
       "tension": "Ottimismo digitale di fine millennio e paura del collasso informatico. Tutto diventa liquido, lucido e portatile.",
-      "material": "Maglia metallica, dischi di plastica e metallo, acciaio lucido, plastica bianca verniciata. Superfici che riflettono.",
-      "artifacts": "Abiti in maglia metallica di Paco Rabanne, ripresi come riferimento di fine millennio. iPod di prima generazione, con rotellina e retro in acciaio a specchio.",
-      "gesture": "Il pollice scorre sulla rotella, le cuffie sono bianche. Il corpo ascolta in movimento, isolato nella città.",
+      "material": "Fodere grigie, legno, plastica bianca, acciaio lucido. Superfici che riflettono e superfici di casa.",
+      "artifacts": "Afterwords di Chalayan: un salotto in passerella, le fodere delle sedie diventano abiti e il tavolo diventa una gonna rigida. iPod di prima generazione: 5 GB, 1000 brani, 399 dollari, rotellina e retro in acciaio.",
+      "gesture": "Il corpo evacua portando la casa addosso; il pollice scorre sulla rotella, le cuffie sono bianche. Si ascolta in movimento, isolati nella città.",
       "decomposition": "Il lucido si riga e la batteria muore. Il formato scompare con lo streaming, e l'estetica torna come nostalgia."
     },
     "verified": false,
-    "to_verify": "Rabanne è soprattutto anni '60: serve un riferimento Y2K preciso. Il periodo arriva al 2005, oltre il 2000 del titolo.",
+    "to_verify": "Rabanne è stato spostato nel reperto 002 (anni '60). Resta da decidere se Chalayan (2000) rappresenta bene l'ottimismo digitale: la collezione parla di sfollamento e guerra. Il periodo arriva al 2005, oltre il 2000 del titolo.",
     "images": [
       {
         "slot": "fashion",
-        "file": "assets/006-fashion.jpg",
+        "file": "assets/008-fashion.jpg",
         "query": "Paco Rabanne chainmail dress",
         "commons_file": null,
         "credit": null,
@@ -440,7 +662,7 @@
       },
       {
         "slot": "design",
-        "file": "assets/006-design.jpg",
+        "file": "assets/008-design.jpg",
         "query": "iPod first generation",
         "commons_file": null,
         "credit": null,
@@ -454,7 +676,7 @@
       },
       {
         "slot": "material",
-        "file": "assets/006-material.jpg",
+        "file": "assets/008-material.jpg",
         "query": "brushed stainless steel macro",
         "commons_file": null,
         "credit": null,
@@ -466,7 +688,7 @@
       },
       {
         "slot": "space",
-        "file": "assets/006-space.jpg",
+        "file": "assets/008-space.jpg",
         "query": "Millennium Dome 2000",
         "commons_file": null,
         "credit": null,
@@ -476,6 +698,16 @@
           "Frank Gehry Guggenheim Bilbao",
           "2000s tech office interior"
         ]
+      }
+    ],
+    "sources": [
+      {
+        "label": "Designboom · Chalayan, Afterwords",
+        "url": "https://www.designboom.com/design/2000-hussein-chalayan-collection-living-room-after-words/"
+      },
+      {
+        "label": "History.com · primo iPod",
+        "url": "https://www.history.com/this-day-in-history/october-23/first-ipod"
       }
     ]
   }

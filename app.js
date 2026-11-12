@@ -233,9 +233,13 @@ function renderRuler() {
     html += `<span class="tick ${cls}" style="left:${pct(y)}%"></span>`;
     if (y % 10 === 0 || y === YEAR_MAX) html += `<span class="year" style="left:${pct(y)}%">${y}</span>`;
   }
+  const laneEnd = [];
   state.items.forEach((it) => {
     const [a, b] = it.years;
-    html += `<a class="seg" href="#dossier-${esc(it.id)}" style="left:${pct(a)}%;width:${pct(b) - pct(a)}%"
+    let lane = laneEnd.findIndex((end) => a > end);
+    if (lane < 0) lane = laneEnd.length;
+    laneEnd[lane] = b;
+    html += `<a class="seg" href="#dossier-${esc(it.id)}" style="left:${pct(a)}%;width:${Math.max(pct(b) - pct(a), 2.2)}%;top:${4 + lane * 26}px"
       title="Specimen #${esc(it.id)} · ${esc(it.period)}">#${esc(it.id)}</a>`;
   });
   $('ruler').innerHTML = html;
@@ -290,6 +294,8 @@ function renderDossier(id) {
         </div>
         <h3 class="protocol-title">Provenienza</h3>
         <ol class="prov">${provenanceHTML(it)}</ol>
+        ${(it.sources || []).length ? `<h3 class="protocol-title">Fonti dei dati</h3>
+        <ol class="prov">${it.sources.map((x) => `<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.label)}</a></li>`).join('')}</ol>` : ''}
       </div>
       <div class="dossier-main">
         <p class="kicker">Specimen #${esc(it.id)} · ${esc(it.period)}</p>

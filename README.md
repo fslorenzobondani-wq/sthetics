@@ -32,12 +32,16 @@ Per scegliere tu un'immagine precisa: scrivi in `commons_file` il titolo esatto 
 
 | # | Moda | Design | Materiale 40X | Spazio |
 |---|---|---|---|---|
-| 001 Space Age | Courrèges, abito e stivali bianchi | Ball Chair, Eero Aarnio | fibra di vetro, resina, PVC | Futuro House, Matti Suuronen |
-| 002 Punk & Radical | Seditionaries, pantaloni bondage | Superstudio, Monumento Continuo | gomma, lattice, pelle | la boutique al 430 di King's Road |
-| 003 Memphis | piumino Moncler anni '80 | libreria Carlton, Sottsass | laminato plastico decorato | interni Memphis, Milano |
-| 004 Darkwave | Margiela, scarpe Tabi | Juicy Salif, Starck | alluminio fuso, finitura satinata | magazzino industriale anni '90 |
-| 005 Tactical Cyberpunk | Vexed Generation, capispalla | iMac G3 Bondi Blue | policarbonato traslucido | ufficio o casa con iMac, 1998 |
-| 006 Y2K | Paco Rabanne, maglia metallica | iPod prima generazione | acciaio spazzolato, specchio | Millennium Dome, 2000 |
+| 001 Space Age | Courrèges, collezione autunno 1964 | Ball Chair, Eero Aarnio | fibra di vetro, resina, PVC | Futuro House, Matti Suuronen |
+| 002 Plastic Pop | Paco Rabanne, abiti 1966 | Panton Chair, Verner Panton | schiuma poliuretanica, dischi di plastica | interni pop anni '60 |
+| 003 Punk & Radical | Seditionaries, 430 King's Road | Superstudio, Monumento Continuo | gomma, lattice, pelle | la boutique di King's Road |
+| 004 Portable Solitude | Comme des Garçons, Holes 1982 | Sony Walkman TPS-L2, 1979 | maglia nera con buchi | strade di Tokyo anni '80 |
+| 005 Memphis | piumino Moncler, paninari | libreria Carlton, Sottsass | laminato plastico decorato | interni Memphis, Milano |
+| 006 Darkwave | Margiela, scarpe Tabi | Juicy Salif, Starck | alluminio fuso, satinato | magazzino industriale anni '90 |
+| 007 Tactical Cyberpunk | Vexed Generation | iMac G3 Bondi Blue | policarbonato traslucido | ufficio con iMac, 1998 |
+| 008 Y2K | Chalayan, Afterwords 2000 | iPod prima generazione | acciaio spazzolato | Millennium Dome, 2000 |
+
+Ogni reperto ha un campo `sources` con le pagine da cui sono state controllate le date, mostrate nel dossier. `to_verify` elenca quello che resta da confermare.
 
 Il campo "Materiale 40X" funziona meglio con una foto macro o al microscopio. Le ricerche automatiche trovano spesso solo texture generiche: controlla il risultato.
 

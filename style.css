@@ -67,7 +67,7 @@ button { font: inherit; color: inherit; }
 
 /* ---------- RIGHELLO ---------- */
 .ruler-block { padding: 16px 20px 18px; display: grid; gap: 10px; border-bottom: 1px solid var(--ink); }
-.ruler { position: relative; height: 70px; margin-inline: 16px; border-bottom: 1px solid var(--ink); }
+.ruler { position: relative; height: 100px; margin-inline: 16px; border-bottom: 1px solid var(--ink); }
 .ruler .tick { position: absolute; bottom: 0; width: 1px; height: 5px; background: var(--ink); }
 .ruler .tick.five { height: 9px; }
 .ruler .tick.ten { height: 15px; }
