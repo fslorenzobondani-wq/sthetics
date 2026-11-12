@@ -1,0 +1,215 @@
+/* STHETICS // ARCHAEOLOGY — laboratorio di conservazione.
+   Solo bianco, nero e grigi neutri. Griglia strutturale visibile, linee di marcatura con significato
+   (righello cronologico, segni di taglio sulle tavole). Un solo look, scelto di proposito. */
+
+:root {
+  --ground: #e3e3e0;
+  --paper: #f4f4f2;
+  --ink: #0b0b0b;
+  --mid: #585854;
+  --hair: rgba(11, 11, 11, 0.2);
+  --grid: rgba(11, 11, 11, 0.06);
+  --mono: 'Courier New', Courier, 'Liberation Mono', monospace;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+[hidden] { display: none !important; }
+
+body {
+  background-color: var(--ground);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.55;
+  min-height: 100vh;
+  padding-block: 16px 32px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1280px; margin-inline: auto; display: grid; gap: 16px; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+.panel { background: var(--paper); border: 1px solid var(--ink); min-width: 0; }
+.label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); }
+
+/* ---------- MASTHEAD ---------- */
+.masthead { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
+.brand { padding: 18px 20px; display: grid; gap: 6px; min-width: 0; }
+.brand h1 { font-size: clamp(20px, 4.2vw, 36px); line-height: 1.1; letter-spacing: 0.04em; font-weight: 700; text-transform: uppercase; overflow-wrap: anywhere; }
+.brand .sep { padding-inline: 0.3em; font-weight: 400; }
+.brand p { color: var(--mid); max-width: 62ch; }
+.meta { display: grid; grid-template-columns: repeat(3, auto); border-left: 1px solid var(--ink); }
+.meta div { padding: 18px 20px; border-left: 1px solid var(--hair); display: grid; align-content: space-between; gap: 6px; }
+.meta div:first-child { border-left: 0; }
+.meta dt { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); }
+.meta dd { font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; }
+#clock { font-size: 18px; }
+
+/* ---------- NAV ---------- */
+.views { display: flex; flex-wrap: wrap; border: 1px solid var(--ink); background: var(--paper); }
+.views button {
+  border: 0; border-right: 1px solid var(--ink); background: transparent; cursor: pointer;
+  padding: 10px 16px; text-transform: uppercase; letter-spacing: 0.06em; font-size: 12px;
+}
+.views button:last-child { border-right: 0; }
+.views button:hover { background: var(--ground); }
+.views button[aria-current="page"] { background: var(--ink); color: var(--paper); }
+.views button[aria-disabled="true"] { color: var(--mid); cursor: default; }
+.views button[aria-disabled="true"]:hover { background: transparent; }
+.views small { margin-left: 8px; font-size: 10px; border: 1px dashed currentColor; padding: 0 5px; }
+
+/* ---------- RIGHELLO ---------- */
+.ruler-block { padding: 16px 20px 18px; display: grid; gap: 10px; border-bottom: 1px solid var(--ink); }
+.ruler { position: relative; height: 70px; margin-inline: 16px; border-bottom: 1px solid var(--ink); }
+.ruler .tick { position: absolute; bottom: 0; width: 1px; height: 5px; background: var(--ink); }
+.ruler .tick.five { height: 9px; }
+.ruler .tick.ten { height: 15px; }
+.ruler .year { position: absolute; bottom: 19px; transform: translateX(-50%); font-size: 10px; font-variant-numeric: tabular-nums; }
+.ruler .seg {
+  position: absolute; top: 4px; height: 24px; display: grid; place-items: center;
+  border: 1px solid var(--ink); background: var(--paper); font-size: 10px; text-decoration: none;
+  font-variant-numeric: tabular-nums; overflow: hidden;
+}
+.ruler .seg:hover, .ruler .seg.on { background: var(--ink); color: var(--paper); }
+
+/* ---------- GRIGLIA CATALOGO ---------- */
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-left: 1px solid var(--ink); margin-left: -1px; }
+.plate {
+  display: flex; flex-direction: column; min-width: 0; text-decoration: none;
+  border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); background: var(--paper);
+}
+.plate:last-child, .plate:nth-last-child(-n+3) { border-bottom: 0; }
+.plate:hover { background: var(--ink); color: var(--paper); }
+.plate-head { display: flex; justify-content: space-between; gap: 8px; padding: 8px 12px; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+.fig { display: block; position: relative; aspect-ratio: 4 / 5; max-width: 100%; overflow: hidden; background: #d8d8d5; border-block: 1px solid var(--ink); }
+.fig img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) contrast(1.15); }
+.crop { position: absolute; inset: 0; mix-blend-mode: difference; pointer-events: none; }
+.crop i { position: absolute; width: 16px; height: 16px; border: 0 solid #fff; }
+.crop i:nth-child(1) { top: 10px; left: 10px; border-top-width: 1px; border-left-width: 1px; }
+.crop i:nth-child(2) { top: 10px; right: 10px; border-top-width: 1px; border-right-width: 1px; }
+.crop i:nth-child(3) { bottom: 10px; left: 10px; border-bottom-width: 1px; border-left-width: 1px; }
+.crop i:nth-child(4) { bottom: 10px; right: 10px; border-bottom-width: 1px; border-right-width: 1px; }
+.plate-body { padding: 12px; display: grid; gap: 6px; align-content: start; }
+.plate-body h3 { font-size: 16px; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.03em; overflow-wrap: anywhere; }
+.plate-body .pair { font-size: 12px; overflow-wrap: anywhere; }
+.plate-body .obj { font-size: 11px; color: var(--mid); overflow-wrap: anywhere; }
+.plate:hover .obj { color: var(--hair); color: #bdbdb8; }
+.draft { display: inline-block; justify-self: start; border: 1px dashed currentColor; padding: 0 6px; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* ---------- DOSSIER ---------- */
+.dossier { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+.dossier-fig { padding: 20px; align-self: start; position: sticky; top: 0; display: grid; gap: 10px; }
+.dossier-fig .caption { font-size: 11px; color: var(--mid); letter-spacing: 0.06em; text-transform: uppercase; }
+.dossier-main { padding: 22px 26px 8px; display: grid; gap: 18px; min-width: 0; border-left: 1px solid var(--ink); }
+.kicker { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); }
+.dossier-main h2 { font-size: clamp(24px, 3.4vw, 38px); line-height: 1.08; text-transform: uppercase; letter-spacing: 0.02em; text-wrap: balance; overflow-wrap: anywhere; }
+.facts { border-top: 1px solid var(--ink); }
+.facts > div { display: grid; grid-template-columns: 9.5em minmax(0, 1fr); gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--hair); }
+.facts dt { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); padding-top: 1px; }
+.facts dd { overflow-wrap: anywhere; }
+.protocol-title { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; }
+.layers { list-style: none; border-top: 1px solid var(--ink); }
+.layers li { display: grid; grid-template-columns: 3.4em minmax(0, 1fr); gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--hair); }
+.layers .code { border: 1px solid var(--ink); height: fit-content; text-align: center; font-weight: 700; padding: 2px 0; }
+.layers h4 { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+.layers p { max-width: 62ch; }
+.pager { display: flex; justify-content: space-between; gap: 12px; border-top: 1px solid var(--ink); margin-inline: -26px; }
+.pager a { padding: 12px 26px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.06em; font-size: 12px; }
+.pager a:hover { background: var(--ink); color: var(--paper); }
+.pager .off { padding: 12px 26px; color: var(--mid); font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ---------- LOG ---------- */
+.log { background: var(--ink); color: #e8e8e5; border: 1px solid var(--ink); padding: 12px 16px; font-size: 11px; }
+.log h2 { font-size: 11px; letter-spacing: 0.14em; font-weight: 700; margin-bottom: 8px; color: #9a9a95; }
+.log ol { list-style: none; display: grid; gap: 2px; }
+.log li { overflow-wrap: anywhere; }
+.log time { color: #9a9a95; font-variant-numeric: tabular-nums; margin-right: 8px; }
+
+.error { padding: 40px 20px; text-align: center; }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .plate:nth-last-child(-n+3) { border-bottom: 1px solid var(--ink); }
+  .plate:nth-last-child(-n+2) { border-bottom: 0; }
+  .dossier { grid-template-columns: minmax(0, 1fr); }
+  .dossier-fig { position: static; border-bottom: 1px solid var(--ink); }
+  .dossier-main { border-left: 0; }
+}
+@media (max-width: 640px) {
+  .masthead { grid-template-columns: minmax(0, 1fr); }
+  .meta { border-left: 0; border-top: 1px solid var(--ink); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .meta div { padding: 12px 14px; }
+  .meta dd { font-size: 18px; }
+  #clock { font-size: 14px; }
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  .plate:nth-last-child(-n+2) { border-bottom: 1px solid var(--ink); }
+  .plate:last-child { border-bottom: 0; }
+  .dossier-main { padding: 18px 16px 8px; }
+  .pager { margin-inline: -16px; }
+  .pager a, .pager .off { padding: 12px 16px; }
+  .facts > div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .views button { flex: 1 1 auto; }
+}
+
+/* ---------- VISTA INFINITA ---------- */
+.inf-vp {
+  position: relative; overflow: hidden; cursor: grab; touch-action: none; user-select: none;
+  height: clamp(440px, 74vh, 800px);
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--hair) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hair) 1px, transparent 1px);
+  background-size: 240px 319px;
+}
+.inf-vp.grabbing { cursor: grabbing; }
+.inf-world { position: absolute; left: 0; top: 0; width: 0; height: 0; transform-origin: 0 0; will-change: transform; }
+.tile { position: absolute; display: block; width: 220px; text-decoration: none; color: var(--ink); -webkit-user-drag: none; }
+.tile .fig { width: 220px; height: 275px; aspect-ratio: auto; border: 1px solid var(--ink); background: #d8d8d5; }
+.tile-cap { display: block; height: 24px; padding: 4px 4px 0; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; overflow: hidden; }
+.tile:hover .tile-cap { background: var(--ink); color: var(--paper); }
+.hud { position: absolute; background: var(--paper); border: 1px solid var(--ink); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; padding: 5px 10px; font-variant-numeric: tabular-nums; max-width: calc(100% - 24px); }
+.hud-tl { top: 12px; left: 12px; font-weight: 700; }
+.hud-bl { bottom: 12px; left: 12px; color: var(--mid); }
+.hud-tr { top: 12px; right: 12px; display: flex; padding: 0; }
+.hud-tr button { width: 34px; height: 30px; border: 0; border-left: 1px solid var(--ink); background: var(--paper); cursor: pointer; font-size: 15px; }
+.hud-tr button:first-child { border-left: 0; }
+.hud-tr button:hover { background: var(--ink); color: var(--paper); }
+.hint { padding: 10px 16px; border-top: 1px solid var(--ink); font-size: 11px; color: var(--mid); max-width: 110ch; }
+
+/* ---------- MINIATURE E PROVENIENZA (dossier) ---------- */
+.thumbs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.thumb { display: grid; gap: 4px; border: 0; background: transparent; padding: 0; cursor: pointer; text-align: left; min-width: 0; }
+.thumb .fig { border: 1px solid var(--hair); }
+.thumb span:last-child { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mid); overflow-wrap: anywhere; }
+.thumb:hover .fig, .thumb[aria-pressed="true"] .fig { border-color: var(--ink); outline: 1px solid var(--ink); }
+.thumb[aria-pressed="true"] span:last-child { color: var(--ink); font-weight: 700; }
+.thumb .crop { display: none; }
+.prov { list-style: none; display: grid; gap: 4px; font-size: 11px; color: var(--mid); border-top: 1px solid var(--ink); padding-top: 8px; }
+.prov li { overflow-wrap: anywhere; }
+.prov a { color: var(--ink); }
+.dossier-fig .protocol-title { margin-top: 6px; }
+.credits-note { font-size: 11px; color: var(--mid); max-width: 90ch; }
+
+@media (max-width: 640px) {
+  .thumbs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .inf-vp { height: clamp(420px, 70vh, 640px); }
+  .hud-tl { font-size: 10px; }
+  .hud-bl { display: none; }
+}
+
+/* ---------- CORREZIONI MOBILE ---------- */
+@media (max-width: 640px) {
+  .views { display: grid; }
+  .views button { border-right: 0; border-bottom: 1px solid var(--ink); }
+  .views button:last-child { border-bottom: 0; }
+  .hud-tr { top: auto; bottom: 12px; }
+  .hud-tl { max-width: calc(100% - 24px); white-space: normal; }
+}

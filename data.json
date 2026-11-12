@@ -1,0 +1,338 @@
+[
+  {
+    "id": "001",
+    "period": "1960–1969",
+    "years": [
+      1960,
+      1969
+    ],
+    "title": "Space Age Rationalism",
+    "fashion": {
+      "designer": "André Courrèges",
+      "artifact": "Collezione Space Age, 1964"
+    },
+    "design": {
+      "designer": "Eero Aarnio",
+      "artifact": "Ball Chair, progetto 1963"
+    },
+    "layers": {
+      "tension": "Corsa allo spazio e fiducia nel progresso tecnico: il futuro viene progettato come un prodotto di serie, pulito e ottimista.",
+      "material": "Fibra di vetro e resina, vinile, tessuti rigidi e PVC. Superfici lisce, bianche e industriali, senza traccia della mano.",
+      "artifacts": "Abito trapezio corto e stivali bianchi di Courrèges. Ball Chair di Eero Aarnio: una sfera cava in cui il corpo entra e si isola.",
+      "gesture": "Il corpo è liberato e geometrico: gambe scoperte, passo rapido. La seduta avvolge e separa chi la abita dallo spazio intorno.",
+      "decomposition": "Il bianco ingiallisce e la fibra di vetro si crepa. L'utopia pulita sopravvive come citazione retro-futurista, nostalgia di un futuro mai realizzato."
+    },
+    "verified": false,
+    "to_verify": "Anno di presentazione della Ball Chair (1966) e data esatta della collezione Courrèges.",
+    "images": [
+      {
+        "slot": "fashion",
+        "file": "assets/001-fashion.jpg",
+        "query": "Courrèges 1960s dress",
+        "commons_file": null,
+        "credit": null
+      },
+      {
+        "slot": "design",
+        "file": "assets/001-design.jpg",
+        "query": "Ball Chair Eero Aarnio",
+        "commons_file": null,
+        "credit": null
+      },
+      {
+        "slot": "material",
+        "file": "assets/001-material.jpg",
+        "query": "fibreglass texture close-up",
+        "commons_file": null,
+        "credit": null
+      },
+      {
+        "slot": "space",
+        "file": "assets/001-space.jpg",
+        "query": "Futuro house Matti Suuronen",
+        "commons_file": null,
+        "credit": null
+      }
+    ]
+  },
+  {
+    "id": "002",
+    "period": "1970–1979",
+    "years": [
+      1970,
+      1979
+    ],
+    "title": "Industrial Punk & Radical Design",
+    "fashion": {
+      "designer": "Vivienne Westwood e Malcolm McLaren",
+      "artifact": "Seditionaries, Londra, dal 1976"
+    },
+    "design": {
+      "designer": "Superstudio",
+      "artifact": "Monumento Continuo, 1969 / Supersuperficie, 1971"
+    },
+    "layers": {
+      "tension": "Crisi economica e sfiducia nelle istituzioni. L'abito e l'architettura diventano un gesto contro il buon gusto e contro l'idea di progresso lineare.",
+      "material": "Gomma, pelle, cerniere, catene e spille da balia. Nei progetti di Superstudio, la griglia e il laminato: materiali industriali usati come provocazione.",
+      "artifacts": "Capi della boutique Seditionaries. Collage del Monumento Continuo e della Supersuperficie: una struttura che copre il pianeta.",
+      "gesture": "Postura rigida e frontale, abiti che costringono e segnalano. Il corpo viene marcato e legato. Nei disegni di Superstudio, scompare dentro una griglia infinita.",
+      "decomposition": "La provocazione viene assorbita dal mercato: lo strappo diventa un'estetica riproducibile e i collage radicali finiscono in museo."
+    },
+    "verified": false,
+    "to_verify": "Data del cambio di nome della boutique in Seditionaries e anno esatto della Supersuperficie.",
+    "images": [
+      {
+        "slot": "fashion",
+        "file": "assets/002-fashion.jpg",
+        "query": "Seditionaries bondage trousers Westwood",
+        "commons_file": null,
+        "credit": null
+      },
+      {
+        "slot": "design",
+        "file": "assets/002-design.jpg",
+        "query": "Superstudio Continuous Monument",
+        "commons_file": null,
+        "credit": null
+      },
+      {
+        "slot": "material",
+        "file": "assets/002-material.jpg",
+        "query": "rubber latex texture close-up",
+        "commons_file": null,
+        "credit": null
+      },
+      {
+        "slot": "space",
+        "file": "assets/002-space.jpg",
+        "query": "World's End 430 King's Road shop",
+        "commons_file": null,
+        "credit": null
+      }
+    ]
+  },
+  {
+    "id": "003",
+    "period": "1980–1988",
+    "years": [
+      1980,
+      1988
+    ],
+    "title": "Suburban Hyper-Consumerism & Memphis",
+    "fashion": {
+      "designer": "Moncler",
+      "artifact": "Piumino, anni '80"
+    },
+    "design": {
+      "designer": "Ettore Sottsass / Memphis",
+      "artifact": "Libreria Carlton, 1981"
+    },
+    "layers": {
+      "tension": "Boom dei consumi e cultura del marchio. L'identità si compra, e i gruppi giovanili si riconoscono attraverso etichette e colori.",
+      "material": "Nylon lucido imbottito di piumino, laminato plastico decorato, superfici a motivi grafici. Il materiale povero diventa decorazione.",
+      "artifacts": "Piumino Moncler, indossato dai giovani paninari italiani. Libreria Carlton di Sottsass per il gruppo Memphis, nato a Milano.",
+      "gesture": "Il corpo si gonfia e si protegge sotto il volume del capo. La libreria è un totem colorato più che un contenitore.",
+      "decomposition": "Il colore sbiadisce e l'imbottitura si schiaccia. Il marchio sopravvive come status, e il design Memphis passa da scandalo a classico da collezione."
+    },
+    "verified": false,
+    "to_verify": "Quando il piumino Moncler diventa simbolo dei paninari. Date di fondazione di Memphis (1980) e della Carlton (1981).",
+    "images": [
+      {
+        "slot": "fashion",
+        "file": "assets/003-fashion.jpg",
+        "query": "Moncler puffer jacket 1980s",
+        "commons_file": null,
+        "credit": null
+      },
+      {
+        "slot": "design",
+        "file": "assets/003-design.jpg",
+        "query": "Memphis Group Carlton bookcase Sottsass",
+        "commons_file": null,
+        "credit": null
+      },
+      {
+        "slot": "material",
+        "file": "assets/003-material.jpg",
+        "query": "plastic laminate pattern 1980s",
+        "commons_file": null,
+        "credit": null
+      },
+      {
+        "slot": "space",
+        "file": "assets/003-space.jpg",
+        "query": "Memphis Milano interior 1980s",
+        "commons_file": null,
+        "credit": null
+      }
+    ]
+  },
+  {
+    "id": "004",
+    "period": "1988–1994",
+    "years": [
+      1988,
+      1994
+    ],
+    "title": "Darkwave / Industrial Cryptography",
+    "fashion": {
+      "designer": "Maison Martin Margiela",
+      "artifact": "Prima collezione, 1988 / scarpa Tabi"
+    },
+    "design": {
+      "designer": "Philippe Starck",
+      "artifact": "Juicy Salif per Alessi, 1990"
+    },
+    "layers": {
+      "tension": "Anonimato contro culto della griffe: cancellare il nome e mostrare la costruzione, mentre il design diventa icona mediatica.",
+      "material": "Cotone grezzo, etichetta bianca cucita con quattro punti visibili, alluminio fuso e finiture satinate che nascondono l'autore.",
+      "artifacts": "Capi e scarpe Tabi della Maison Martin Margiela. Spremiagrumi Juicy Salif di Starck: una struttura a tre gambe che somiglia a un insetto.",
+      "gesture": "Volto coperto, corpo senza nome: il gesto è sparire. L'oggetto resta in piedi come una creatura sul tavolo, più che come strumento.",
+      "decomposition": "L'anonimato diventa a sua volta un marchio riconoscibile. L'oggetto-scultura smette di funzionare ed è esposto invece di essere usato."
+    },
+    "verified": false,
+    "to_verify": "Data della prima sfilata Margiela. La coppia con Starck non ha un legame diretto con il darkwave: serve una giustificazione o un altro oggetto.",
+    "images": [
+      {
+        "slot": "fashion",
+        "file": "assets/004-fashion.jpg",
+        "query": "Martin Margiela tabi boots",
+        "commons_file": null,
+        "credit": null
+      },
+      {
+        "slot": "design",
+        "file": "assets/004-design.jpg",
+        "query": "Juicy Salif Alessi Starck",
+        "commons_file": null,
+        "credit": null
+      },
+      {
+        "slot": "material",
+        "file": "assets/004-material.jpg",
+        "query": "cast aluminium surface close-up",
+        "commons_file": null,
+        "credit": null
+      },
+      {
+        "slot": "space",
+        "file": "assets/004-space.jpg",
+        "query": "1990s industrial warehouse interior",
+        "commons_file": null,
+        "credit": null
+      }
+    ]
+  },
+  {
+    "id": "005",
+    "period": "1995–1999",
+    "years": [
+      1995,
+      1999
+    ],
+    "title": "Tactical Cyberpunk",
+    "fashion": {
+      "designer": "Vexed Generation",
+      "artifact": "Capispalla tecnici, Londra, dal 1994"
+    },
+    "design": {
+      "designer": "Apple / Jonathan Ive",
+      "artifact": "iMac G3, 1998"
+    },
+    "layers": {
+      "tension": "Sorveglianza, inquinamento e rete. L'abito si fa armatura urbana, mentre il computer entra in casa come oggetto colorato e amichevole.",
+      "material": "Nylon tecnico, imbottiture, cappucci e maschere antismog. Policarbonato traslucido colorato per la scocca del computer.",
+      "artifacts": "Capispalla di Vexed Generation con colletto alto e cappuccio. iMac G3 nel colore Bondi Blue: l'elettronica che mostra l'interno attraverso la plastica.",
+      "gesture": "Postura chiusa, volto semi-coperto, movimento rapido in città. Davanti allo schermo il corpo si siede e guarda dentro.",
+      "decomposition": "Il policarbonato ingiallisce e si graffia. Il futuro tattico diventa costume, e il computer colorato diventa pezzo da collezione."
+    },
+    "verified": false,
+    "to_verify": "Anno di fondazione di Vexed Generation, capi esatti da mostrare e attribuzione del design dell'iMac.",
+    "images": [
+      {
+        "slot": "fashion",
+        "file": "assets/005-fashion.jpg",
+        "query": "Vexed Generation jacket",
+        "commons_file": null,
+        "credit": null
+      },
+      {
+        "slot": "design",
+        "file": "assets/005-design.jpg",
+        "query": "iMac G3 Bondi Blue",
+        "commons_file": null,
+        "credit": null
+      },
+      {
+        "slot": "material",
+        "file": "assets/005-material.jpg",
+        "query": "translucent polycarbonate close-up",
+        "commons_file": null,
+        "credit": null
+      },
+      {
+        "slot": "space",
+        "file": "assets/005-space.jpg",
+        "query": "iMac G3 office 1998",
+        "commons_file": null,
+        "credit": null
+      }
+    ]
+  },
+  {
+    "id": "006",
+    "period": "2000–2005",
+    "years": [
+      2000,
+      2005
+    ],
+    "title": "Y2K Utopianism & Liquid Digital",
+    "fashion": {
+      "designer": "Paco Rabanne",
+      "artifact": "Abiti in maglia metallica"
+    },
+    "design": {
+      "designer": "Apple",
+      "artifact": "iPod di prima generazione, 2001"
+    },
+    "layers": {
+      "tension": "Ottimismo digitale di fine millennio e paura del collasso informatico. Tutto diventa liquido, lucido e portatile.",
+      "material": "Maglia metallica, dischi di plastica e metallo, acciaio lucido, plastica bianca verniciata. Superfici che riflettono.",
+      "artifacts": "Abiti in maglia metallica di Paco Rabanne, ripresi come riferimento di fine millennio. iPod di prima generazione, con rotellina e retro in acciaio a specchio.",
+      "gesture": "Il pollice scorre sulla rotella, le cuffie sono bianche. Il corpo ascolta in movimento, isolato nella città.",
+      "decomposition": "Il lucido si riga e la batteria muore. Il formato scompare con lo streaming, e l'estetica torna come nostalgia."
+    },
+    "verified": false,
+    "to_verify": "Rabanne è soprattutto anni '60: serve un riferimento Y2K preciso. Il periodo arriva al 2005, oltre il 2000 del titolo.",
+    "images": [
+      {
+        "slot": "fashion",
+        "file": "assets/006-fashion.jpg",
+        "query": "Paco Rabanne chainmail dress",
+        "commons_file": null,
+        "credit": null
+      },
+      {
+        "slot": "design",
+        "file": "assets/006-design.jpg",
+        "query": "iPod first generation",
+        "commons_file": null,
+        "credit": null
+      },
+      {
+        "slot": "material",
+        "file": "assets/006-material.jpg",
+        "query": "brushed stainless steel macro",
+        "commons_file": null,
+        "credit": null
+      },
+      {
+        "slot": "space",
+        "file": "assets/006-space.jpg",
+        "query": "Millennium Dome 2000",
+        "commons_file": null,
+        "credit": null
+      }
+    ]
+  }
+]
