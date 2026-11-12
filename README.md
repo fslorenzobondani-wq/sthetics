@@ -4,7 +4,7 @@ Archivio clinico del design industriale e delle sottoculture, 1960–2000. Solo 
 
 ## File da caricare su GitHub
 
-Nella radice del repository: `index.html`, `style.css`, `app.js`, `data.json`.
+Nella radice del repository: `index.html`, `style.css`, `app.js`, `deposit.js`, `config.js`, `data.json`.
 Se usi le foto: anche la cartella `assets/`. La cartella `tools/` serve solo a te, non è necessario caricarla.
 
 ## Come arrivano le immagini
@@ -62,6 +62,20 @@ Importante:
 - lo script non è stato provato contro il servizio reale (da dove è stato scritto non c'era accesso a internet): il suo funzionamento è stato controllato con una risposta simulata. Se qualcosa non va, `--list` ti mostra cosa vede;
 - le licenze CC BY e BY-SA richiedono di citare l'autore, e il sito lo fa. Le foto in bianco e nero sono opere derivate: con BY-SA devono restare sotto la stessa licenza;
 - controlla sempre il risultato: a volte il primo file non è quello giusto.
+
+## Deposito aperto (vista 04)
+
+Il visitatore incolla il link di un file di Wikimedia Commons (o l'indirizzo diretto di un'immagine). La pagina controlla formato, dimensione, licenza (solo CC0, pubblico dominio, CC BY, CC BY-SA), autore e anno. Poi un modello AI (CLIP, nel browser, scaricato da internet la prima volta, circa 150 MB) suggerisce slot e reperto: il suggerimento sul periodo è debole e va corretto a mano. Pinterest, Instagram, TikTok e Vinted vengono rifiutati perché non permettono di leggere licenza né immagine.
+
+Per condividere i depositi con tutti i visitatori serve un database gratuito Supabase:
+1. Crea un progetto su supabase.com.
+2. Apri *SQL Editor*, incolla il contenuto di `tools/setup_deposit.sql` ed esegui.
+3. In *Project Settings → API* copia l'indirizzo del progetto e la chiave `anon public` (mai la `service_role`) dentro `config.js`.
+4. Le immagini depositate arrivano come `pending`. Per approvarle apri *Table Editor → deposits* e cambia `status` in `approved`.
+
+Senza `config.js` compilato, i depositi restano solo nel browser di chi li fa. La chiave `anon` è fatta per essere pubblica: i permessi sono limitati dalle regole del file SQL (si può solo aggiungere righe `pending`).
+
+Le immagini approvate sono hotlink: se il sito di origine le toglie, spariscono. Per i file di Commons non è un problema.
 
 ## Testi
 

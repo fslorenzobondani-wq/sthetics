@@ -25,6 +25,7 @@
       <button type="button" id="nav-infinite" data-view="infinite">[00. INFINITE VIEW]</button>
       <button type="button" id="nav-catalogue" data-view="catalogue">[01. CATALOGUE GRID]</button>
       <button type="button" id="nav-dossier" data-view="dossier">[02. CLINICAL DOSSIER]</button>
+      <button type="button" id="nav-deposit" data-view="deposit">[04. DEPOSITO APERTO]</button>
       <button type="button" id="nav-moodboard" data-view="moodboard" aria-disabled="true">[03. MOODBOARD MATRIX]<small>in arrivo</small></button>
     </nav>
 
@@ -55,6 +56,11 @@
         <div id="grid" class="grid"></div>
       </section>
 
+      <!-- 04. DEPOSITO APERTO -->
+      <section id="view-deposit" class="panel" aria-label="Deposito aperto" hidden>
+        <div id="deposit"></div>
+      </section>
+
       <!-- 02. CLINICAL DOSSIER -->
       <section id="view-dossier" class="panel" aria-label="Clinical dossier" hidden>
         <div id="dossier"></div>
@@ -69,6 +75,8 @@
     <p class="credits-note">Le immagini sono mostrate in bianco e nero. Fonte, autore e licenza di ciascuna sono nella sezione Provenienza del dossier.</p>
 
   </div>
+  <script src="config.js"></script>
   <script src="app.js"></script>
+  <script src="deposit.js"></script>
 </body>
 </html>

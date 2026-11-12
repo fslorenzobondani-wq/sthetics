@@ -231,3 +231,27 @@ button { font: inherit; color: inherit; }
 .inf-years .yr.dec { width: 46px; }
 .inf-years .yr.dec::after { content: attr(data-yr); position: absolute; left: 4px; top: 2px; font-size: 11px; font-weight: 700; background: rgba(251,251,250,.92); padding: 0 3px; }
 .hud-tl { left: 58px; }
+
+/* ---------- DEPOSITO APERTO ---------- */
+.dep { padding: 24px 22px 32px; max-width: 760px; display: grid; gap: 14px; }
+.dep h2 { margin: 0; font-size: 26px; letter-spacing: 0.02em; text-transform: uppercase; }
+.dep-lead, .dep-note, .dep-ai { margin: 0; line-height: 1.55; }
+.dep-note, .dep-ai small { color: var(--mid); }
+.dep-form label, .dep-save label { display: grid; gap: 6px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+.dep-row { display: flex; gap: 0; }
+.dep input, .dep select { font: inherit; font-size: 14px; padding: 10px 12px; border: 1px solid var(--ink); background: var(--paper); color: var(--ink); border-radius: 0; min-width: 0; width: 100%; }
+.dep-row input { flex: 1; border-right: 0; }
+.dep button { font: inherit; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 18px; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); border-radius: 0; cursor: pointer; }
+.dep button:disabled { opacity: .5; cursor: wait; }
+.dep-out { display: grid; gap: 14px; }
+.dep-fig { margin: 0; border: 1px solid var(--ink); background: #e6e6e3; max-width: 320px; }
+.dep-fig img { display: block; width: 100%; height: auto; filter: grayscale(1) contrast(1.08); }
+.dep-checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: 13px; }
+.dep-checks b { display: inline-block; width: 1.4em; }
+.dep-checks .no { color: #8a1c1c; }
+.dep-checks .warn { color: var(--mid); }
+.dep-status { margin: 0; color: var(--mid); font-size: 13px; }
+.dep-error { margin: 0; padding: 10px 12px; border: 1px solid #8a1c1c; color: #8a1c1c; font-size: 13px; }
+.dep-ok { margin: 0; padding: 10px 12px; border: 1px solid var(--ink); font-size: 13px; }
+.dep-save { display: grid; gap: 12px; }
+@media (max-width: 640px) { .dep-row { flex-direction: column; } .dep-row input { border-right: 1px solid var(--ink); border-bottom: 0; } }

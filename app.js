@@ -17,7 +17,7 @@ const SLOTS = [
 const YEAR_MIN = 1960;
 const YEAR_MAX = 2005;
 
-const state = { items: [], view: null, current: null, live: {} };
+const state = { items: [], view: null, current: null, live: {}, deposits: [] };
 const $ = (id) => document.getElementById(id);
 const mod = (n, m) => ((n % m) + m) % m;
 const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -199,7 +199,8 @@ function entriesFor(item, slotKey) {
   if (im && im.local && im.file) {
     return [{ id: item.id, slot: slotKey, src: im.file, aspect: im.w && im.h ? im.w / im.h : 0.8, credit: im.credit || null, own: !im.credit }];
   }
-  return state.live[item.id + '|' + slotKey] || [];
+  const dep = (state.deposits || []).filter((e) => e.id === item.id && e.slot === slotKey);
+  return dep.concat(state.live[item.id + '|' + slotKey] || []);
 }
 const bestEntry = (item, slotKey) => entriesFor(item, slotKey)[0] || null;
 const srcOf = (item, slotKey) => { const e = bestEntry(item, slotKey); return e ? e.src : placeholder(item, slotKey); };
@@ -587,7 +588,7 @@ function infInit() {
 // ---------- VISTE E ROUTING ----------
 function showView(view, id) {
   state.view = view;
-  ['infinite', 'catalogue', 'dossier'].forEach((v) => { $('view-' + v).hidden = v !== view; });
+  ['infinite', 'catalogue', 'dossier', 'deposit'].forEach((v) => { $('view-' + v).hidden = v !== view; });
   if (view === 'dossier') {
     state.current = id;
     renderDossier(id);
@@ -596,6 +597,8 @@ function showView(view, id) {
     infInit();
     infUpdate();
     log('VIEW → INFINITE VIEW');
+  } else if (view === 'deposit') {
+    log('VIEW → OPEN ARCHIVAL DEPOSIT');
   } else {
     log('VIEW → CATALOGUE GRID');
   }
@@ -615,6 +618,7 @@ function route() {
   const m = h.match(/^dossier-(\d{3})$/);
   if (m && itemOf(m[1])) showView('dossier', m[1]);
   else if (h === 'catalogue') showView('catalogue');
+  else if (h === 'deposit') showView('deposit');
   else showView('infinite');
 }
 
@@ -624,6 +628,7 @@ function initNav() {
   $('nav-dossier').addEventListener('click', () => {
     location.hash = 'dossier-' + (state.current || state.items[0].id);
   });
+  $('nav-deposit').addEventListener('click', () => { location.hash = 'deposit'; });
   $('nav-moodboard').addEventListener('click', () => {
     log('MODULE OFFLINE · MOODBOARD MATRIX · IN ARRIVO AL PASSO 4');
   });
@@ -659,6 +664,7 @@ async function init() {
   log(`${verified}/${state.items.length} VERIFICATI · ${state.items.length - verified} IN BOZZA`);
   window.addEventListener('hashchange', route);
   route();
+  if (typeof loadDeposits === 'function') loadDeposits();
   loadLive(); // riempie muro, catalogo e dossier appena arrivano i risultati
 }
 
